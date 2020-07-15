@@ -1,0 +1,24 @@
+extends base/_layout
+block head
+	title Login
+block page
+
+	section.section-default
+		.container
+			+breadcrumbs(['Главная', 'Войти'])
+			.title-default Войдите в свой аккаунт
+		.container
+			.form-container
+				form.form
+					.form-line
+						+labelForm({label_name: 'Логин'})
+					.form-line
+						a(href="#").attached-link Напомнить пароль
+						+labelForm({label_name: 'Пароль', input_type: 'password'})
+					.form-bottom
+						button(type="submit").btn.btn-default
+							span Войти
+		//container
+		.space-separator
+		+controlLine([{name: 'Вконтакте', className: 'vk', icon: 'vk-social', target: "_blank"}, {name: 'Facebook', className: 'fb', icon: 'fb-social', target: "_blank"}],'control-line-mobile-nowrap',{text: 'Или используйте соцсети', class_quote: ''})
+	//section-default

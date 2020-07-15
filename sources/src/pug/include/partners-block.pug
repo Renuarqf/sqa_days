@@ -1,0 +1,74 @@
+.partners-block
+	mixin partnerSingle(img)
+		.parther
+			img( src="images/content/partners/"+img+"" alt="")
+	.partners-group
+		.partners__title Платиновые
+		.partners__row.xl-size
+			.partners__col.col-12
+				+partnerSingle('p1.png')
+	.partners-group
+		.partners__title золотые
+		.partners__row.lg-size
+			.partners__col.col-6
+				+partnerSingle('p2.png')
+			.partners__col.col-6
+				+partnerSingle('p3.png')
+	.partners-group
+		.partners__title серебрянные
+		.partners__row.md-size
+			.partners__col.col-4
+				+partnerSingle('p4.png')
+			.partners__col.col-4
+				+partnerSingle('p5.png')
+			.partners__col.col-4
+				+partnerSingle('p6.png')
+	.partners-group
+		.partners__title бронзовые
+		.partners__row.sm-size
+			.partners__col.col-6
+				+partnerSingle('p7.png')
+			.partners__col.col-6
+				+partnerSingle('p8.png')
+	if showAllPartners
+		.partners-group
+			.partners__title Конференции–партнеры
+			.partners__row.xs-size
+				.partners__col.col-6
+					+partnerSingle('p7.png')
+				.partners__col.col-6
+					+partnerSingle('p8.png')
+		.partners-group
+			.partners__title Образовательные
+			.partners__row.xs-size
+				.partners__col.col-12
+					+partnerSingle('p7.png')
+		.partners-group
+			.partners__title Сообщества
+			.partners__row.xs-size
+				.partners__col.col-3
+					+partnerSingle('p7.png')
+				.partners__col.col-3
+					+partnerSingle('p8.png')
+				.partners__col.col-3
+					+partnerSingle('p1.png')
+				.partners__col.col-3
+					+partnerSingle('p2.png')
+		.partners-group
+			.partners__title Информационные
+			.partners__row.xs-size
+				.partners__col.col-3
+					+partnerSingle('p7.png')
+				.partners__col.col-3
+					+partnerSingle('p8.png')
+				.partners__col.col-3
+					+partnerSingle('p1.png')
+				.partners__col.col-3
+					+partnerSingle('p2.png')
+				.partners__col.col-4
+					+partnerSingle('p3.png')
+				.partners__col.col-4
+					+partnerSingle('p4.png')
+				.partners__col.col-4
+					+partnerSingle('p5.png')
+//partners-block

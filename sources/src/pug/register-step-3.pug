@@ -1,0 +1,170 @@
+extends base/_layout
+block head
+	title Step 3
+	- var disableTicketBtn = true
+block page
+
+	mixin paymentLabel(value, checked)
+		label.payment-label
+			input(type="radio" name='payments' data-payment=value checked=checked ? 'checked' : false).payment-radio-input
+			span.payment-style
+				.payment-icon
+					img( src="images/content/payments/" + value + ".png" alt="")
+	mixin paymentEntity()
+		.form-container
+			.form
+				.form-line
+					+labelForm({label_name: 'Ваш контактный email ', required: true})
+				.form-line
+					+labelForm({
+						label_name: 'Реквизиты для выставления счета',
+						required: true,
+						placeholder: 'Реквизиты вашей компании по образцу',
+						textarea: true,
+					})
+			.form-example
+				.form-example__title Образец реквизитов:
+				.form-example__text
+					p ООО "Лаборатория тестирования"
+					p ИНН 7743733674
+					p КПП 774301001
+					p ОГРН 1097746052370
+					p Юридический адрес: 125212, г. Москва, Ленинградское шоссе, д. 46
+					p Адрес для корреспонденции: 220012, Республика Беларусь, г. Минск, а/я 15
+					p Р/счет №40702810600000060505 в ФИЛИАЛЕ № 7701 БАНКА ВТБ (ПАО) г. МОСКВА
+					p К/счет №30101810345250000745
+					p БИК 044525745
+					p В лице Генерального директора Орликова Владислава Александровича, действующего на основании Устава.
+	mixin paymentMethodOne(payment, active)
+		.payment-method__one(data-payment-type=payment style=active ? 'display:block;': '')
+			case payment
+				when 'entity'
+					.container
+						+paymentEntity
+					+controlLine([{
+						name: 'Назад'
+					}, {
+						name: 'Выставить счёт',
+						className: 'control-link-blue'
+					},
+					], 'control-line__mobile-revers')
+				default
+					+controlLine([{
+						name: 'Назад'
+					}, {
+						name: 'перейти к оплате',
+						className: 'control-link-blue'
+					}, {
+						name: 'Оплатить позже',
+					},
+					], 'control-line__mobile-revers')
+		//payment-method__one
+	mixin currencyLabel(value, checked)
+		label.currency-label
+			input(type="radio" name='currency' data-currency=value checked=checked ? checked : false).currency-radio
+			span.currency-style
+				span.currency-value=value
+	mixin currencyResultTab(currency, active)
+		.currency-result-tab(data-currency=currency class=active ? 'active' : '' style=active ? 'display:block;': '')
+			.tab__total
+				.tab__value 1428
+				.tab__currency=currency
+			.tab__inline
+				span= '6x 17-18 Апреля: 1280 ' + currency
+				span= '10% скидка: -252 ' + currency
+
+	section.section-default
+		.container
+			+breadcrumbs(['Главная', 'Билеты', 'Регистрация'])
+			.title-default Регистрация участников
+				| #{' '}
+				span.nowrap SQA Days
+					| #{' '}
+					span.blue /
+					| 26
+		- var currentStep = 3
+		include include/steps-block
+		.payment-details
+			.container
+				.pd__data
+					.pd__data-left
+						.pd__title Участие в конференции
+							| #{' '}
+							span.nowrap SQA Days /26
+						.pd__subtitle 17-18 Апреля (640 BYN/ за 1 участника):
+						ul.pd__list
+							li: span Alex Babdey
+							li: span Tom Svorobovich
+							li: span Nastya Baidalova
+							li: span Иван Зенкович
+							li: span Гжэгош Бжэжынщыкевич
+							li: span Антон Городецкий
+						.pd__discount
+							.pd__discount-text Скидка 10% за регистрацию более 3 участников
+					.pd__data-right
+						.promocode-block
+							.promocode-line
+								+labelForm({
+									label_name: 'Промокод',
+									error_text: 'Неверный промокод',
+									clear_control: true
+								})
+							.promocode-discount Ваша скидка 5%
+
+				//pd__data
+				.pd__currency
+					ul.pd__currency-list
+						li
+							+currencyLabel('byn', true)
+						li
+							+currencyLabel('usd')
+						li
+							+currencyLabel('eur')
+						li
+							+currencyLabel('rub')
+						li
+							+currencyLabel('pln')
+					.pd__currency-result
+						.container
+							+currencyResultTab('byn', true)
+							+currencyResultTab('usd')
+							+currencyResultTab('eur')
+							+currencyResultTab('rub')
+							+currencyResultTab('pln')
+			//container
+		//payment-details
+		.block-default
+			.container
+				.subtitle-default Вы платите как:
+			+radioBlock([{
+				name: 'Физическое лицо',
+				text: 'Для тех кто платит сам за себя не втягивая  в  волокиту с документами  свою организацию',
+				data_type: 'individual',
+				checked: true
+			}, {
+				name: 'Организация',
+				text: 'Как вы поняли из названия, этот вариант подходил если ваш нетворкинг оплачивает организация',
+				data_type: 'entity'
+			}], 'radio-list-column-tablet')
+		//block-default
+		.block-default
+			.container
+				.subtitle-default Выберите способ оплаты:
+			ul.playment-list
+				li
+					+paymentLabel('bepaid', true)
+				li
+					+paymentLabel('cashless')
+				li
+					+paymentLabel('paypal')
+				li
+					+paymentLabel('everypay')
+				li
+					+paymentLabel('paymaster')
+			//payment-method
+		//block-default
+		.payment-method
+			+paymentMethodOne('individual', true)
+			+paymentMethodOne('entity')
+
+	//section-default

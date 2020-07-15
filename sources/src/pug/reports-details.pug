@@ -1,0 +1,150 @@
+extends base/_layout
+block head
+	title Reports Details
+block page
+
+	section.section-default
+
+		.container
+			+breadcrumbs(['Главная', 'Доклады', 'Apache JMeter vs LoadRunner: на заре справедливости, сравнение инструментов нагрузочного тестирования'])
+			.title-default Apache JMeter vs LoadRunner: на заре справедливости, сравнение инструментов нагрузочного тестирования
+			.report-details
+				.report-details__inner
+					ul.report-details__author-list
+						li
+							+member('Calvin Flores', '8', 'Bank of America', 'USA, Boston')
+						li
+							+member('Calvin Flores', '8', 'Bank of America', 'USA, Boston')
+					.report-details__main
+						ul.report-details__info
+							li
+								+parameter({icon: 'lvl-hard', value: 'Сложный'})
+							li
+								+parameter({value: '40 мин'})
+						ul.report-details__controls
+							li
+								+parameter({icon: 'like-icon', value: '1', link: true})
+							li
+								+parameter({icon: 'comment-icon', value: '1', link: true})
+							li.tablet-modify
+								+parameter({
+									value: 'Поделиться',
+									link: true,
+									long: true,
+									class_name: 'js__show-social mobile-hide'
+								})
+								+socialShare()
+			//report-details
+			.text-container-compressed
+				.text-block
+					p В настоящее время на рынке представлено более десятка решений, позволяющих автоматизировать процесс проведения НТ. Наибольшую известность и распространение получили Apache JMeter и HP LoadRunner.
+					p В проектах часто возникают вопросы: "Какой инструмент выбрать?", "Какие тестовые мощности нужны?", "Какой инструмент быстрее?". Я провел небольшое исследование, и сравнил скорость работы на разных протоколах, т.е. кто быстрее LoadRunner vs JMeter? Конечно, для каждой конкретной задачи условия будут меняться и на реальных приложениях вы скорее уроните систему раньше, чем дойдете до предела инструмента, но для понимания sizing'a и развенчания некоторых мифов такая информация будет полезна.
+					p Я расскажу вам о нашем опыте тестирования онлайн-кинотеатра для SmartTV:
+					ul
+						li В чем особенности приложения для SmartTV.
+						li Какие возникают проблемы и что использовать для их решения.
+						li Почему для тестирования приложения для TV нужен большой офис.
+					iframe(src='https://sqadays.com/ru/slides-78021-47506.htm' allowfullscreen).iframe-presentation
+					iframe(src='https://player.vimeo.com/video/397912933', frameborder='0', allow='autoplay; fullscreen', allowfullscreen='')
+				//text-block
+			//text-container-compressed
+	//section-default
+	.line-separator
+	mixin commentOne(obj)
+		- var photo = obj.photo ? obj.photo : 1
+		.comment-one
+			.co__who
+				.co-author
+					.co-author__img(style="background-image: url(images/content/speakers/speaker-" + obj.photo + ".jpg)")
+					.co-author__more
+						.co-author__name=obj.name
+						.co-author__post=obj.post
+			.co__data
+				.co__date= obj.date ? obj.date: '01.08.20'
+				.co__text
+					.text-block
+						p= obj.text
+			.co__info
+				a(href="#").co_like-btn
+					svg.icon
+						use(xlink:href="#like-icon")
+					span.value 1
+	.section-default
+		.container
+			.subtitle-default Комментарии (69)
+			.form-comment__wrap
+				.form.form-comment
+					.form-line
+						+labelForm({
+							label_name: 'Оставить коментарий',
+							textarea: true,
+							placeholder: 'Комментарий',
+							class_name_input: 'form-input-sm'
+						})
+					.form-line
+						button(type="submit").btn.btn-default
+							span отправить
+			ul.comments-list
+				li
+					+commentOne({
+						name: 'Ronald Webb',
+						photo: 2,
+						post: 'General Electric',
+						text: 'Ясность нашей позиции очевидна: социально-экономическое развитие представляет собой интересный эксперимент проверки соответствующих условий активизации. Прежде всего, убеждённость некоторых оппонентов требует определения и уточнения соответствующих условий активизации.',
+					})
+				li
+					+commentOne({
+						name: 'Arlene Fisher',
+						photo: 3,
+						post: 'Sony',
+						text: 'В целом, конечно, повышение уровня гражданского сознания позволяет выполнить важные задания по разработке экономической целесообразности принимаемых решений. Сложно сказать, почему стремящиеся вытеснить традиционное производство, нанотехнологии в равной степени предоставлены сами себе.',
+					})
+				li
+					+commentOne({
+						name: 'Guy Simmmons',
+						photo: 4,
+						post: 'L\'Oréal',
+						text: 'В целом, конечно, повышение уровня гражданского сознания позволяет выполнить важные задания по разработке экономической целесообразности принимаемых решений. Сложно сказать, почему стремящиеся вытеснить традиционное производство, нанотехнологии в равной степени предоставлены сами себе.',
+					})
+				li
+					+commentOne({
+						name: 'Ronald Webb',
+						photo: 5,
+						post: 'General Electric',
+						text: 'Ясность нашей позиции очевидна: социально-экономическое развитие представляет собой интересный эксперимент проверки соответствующих условий активизации. Прежде всего, убеждённость некоторых оппонентов требует определения и уточнения соответствующих условий активизации.',
+					})
+				li
+					+commentOne({
+						name: 'Gladys Mccoy',
+						photo: 6,
+						post: 'General Electric',
+						text: 'Также как повышение уровня гражданского сознания требует от нас анализа системы обучения кадров, соответствующей насущным потребностям. ',
+					})
+				li
+					+commentOne({
+						name: 'Jennie Edwards',
+						photo: 7,
+						post: 'Mitsubishi',
+						text: 'Безусловно, реализация намеченных плановых заданий предоставляет широкие возможности ',
+					})
+				li
+					+commentOne({
+						name: 'Brooklyn Steward',
+						photo: 8,
+						post: 'General Electric',
+						text: 'Сложно сказать, почему реплицированные с зарубежных источников, современные исследования заблокированы в рамках своих собственных рациональных ограничений. Прежде всего, существующая теория требует определения и уточнения экономической целесообразности принимаемых решений.',
+					})
+				li.opacity-block
+					+commentOne({
+						name: 'Jorge Wilson',
+						photo: 9,
+						post: 'The Walt Disney Company',
+						text: 'Интерактивные прототипы призывают нас к новым свершениям, которые, в свою очередь, должны быть объединены в целые кластеры себе подобных. Задача организации, в особенности же разбавленное изрядной долей эмпатии, рациональное мышление не даёт нам иного выбора, кроме определения распределения внутренних резервов и ресурсов.',
+					})
+			//comments-list
+			.show-more-block
+				+controlLine([{name: 'Показать все'}])
+		//container
+	//section-default
+
+

@@ -1,0 +1,16 @@
+extends base/_layout
+block head
+	title Not found
+block page
+
+	section.section-default.section-default-full-height
+		.container
+			.title-default Страница не найдена
+			.page-404
+				.page-404__img
+					img( src="images/content/info-images/404-icon.svg" alt="")
+				.page-404__message Да, такое бывает
+				.page-404__text Возможно ссылка по которой вы пытались перейти сломана, <br/ >или удалена с нашего сайта
+		//container
+		+controlLine([{name: 'Обсудить в telegram'}, {name: 'Посмотреть программу', className: 'control-link-blue'}])
+	//section-default

@@ -1,0 +1,209 @@
+extends base/_layout
+block head
+	title Participant Details
+block page
+
+
+	mixin conferenceList(array)
+		.conference-list__wrap
+			ul.conference-list
+				each item in array
+					li
+						a(href="#").conference-link
+							span=item
+	section.section-default
+		.container
+			+breadcrumbs(['Главная', 'Участники', 'Marvin Mckinney'])
+		//container
+		.participant-details
+			.participant-details__bg
+				.participant-details__bg-img(style="background-image:url(images/content/speakers/speaker-23.jpg)")
+			.participant-details__info
+				.participant-details__photo
+					.participant-details__photo-img(style="background-image:url(images/content/speakers/speaker-23.jpg)")
+				.participant-details__data
+					.container
+						.participant-details__inner
+							.participant-details__name Marvin Mckinney
+							.participant-details__post 69testers – Technical Manager / Program Coordinator
+							.participant-details__location Минск, Беларусь
+							.participant-details__social
+								.share-list
+									li
+										a(href="#")
+											svg.icon
+												use(xlink:href="#vk-social")
+									li
+										a(href="#")
+											svg.icon
+												use(xlink:href="#tw-social")
+									li
+										a(href="#")
+											svg.icon
+												use(xlink:href="#fb-social")
+									li
+										a(href="#")
+											svg.icon
+												use(xlink:href="#in-social")
+							.participant-details__text
+								.text-block
+									p После годов труда в качестве разработчика, открыл для себя мир тестирования, где, пройдя путь инженера, занимает позицию Test Team Lead. "Печень"
+										| #{' '}
+										span.mobile-less Санкт-Петербургского сообщества тестировщиков.Выражает себя через обеспечение качества ПО в компании T-Systems, российском подразделении Deutsche Telekom. Разрушитель хрупких надежд разработчиков на то, что они пишут высококачественный код.
+								.participant-details__show-more__wrap
+									a(href="#").participant-details__show-more Показать полностью
+		//participant-details
+		.participant-controls-line
+			ul.participant__controls
+				li
+					a(href="#").ctrl-one
+						.ctrl-one__icon
+							svg.icon
+								use(xlink:href="#meet-icon")
+						.ctrl-one__name
+							.name Встретиться
+				li
+					a(href="#").ctrl-one
+						.ctrl-one__icon
+							svg.icon
+								use(xlink:href="#mail-icon")
+						.ctrl-one__name
+							.name Написать
+				li
+					a(href="#").ctrl-one.js__add-to-favorite
+						.ctrl-one__icon
+							svg.icon.default-icon
+								use(xlink:href="#favorite-icon")
+							svg.icon.activated-icon
+								use(xlink:href="#favorite-filled-icon")
+						.ctrl-one__name
+							.name.default-name В избранное
+							.name.activated-name В избранном
+
+		.block-default
+			.container
+				.subtitle-default Посещал конференции (11)
+			+conferenceList(['SQA Days EU /1','SQA Days /26','SQA Days /25','SQA Days /24','SQA Days /23','SQA Days /22','SQA Days /21','SQA Days /20','SQA Days /19','SQA Days /19','SQA Days /18','SQA Days /8','Analyst Days /7','Analyst Days /6','Analyst Days /5','Analyst Days /2','Analyst Days /1'])
+		//block-default
+		.block-default
+			.container
+				.subtitle-default Член программного комитета (1)
+			+conferenceList(['Analyst Days /1'])
+		//block-default
+		.block-default
+			.container
+				.subtitle-default Доклады (8)
+				ul.report-list.report-list-margin-bottom
+					li
+						.report
+							.report__inner
+								.report__date 17.09.2017
+								a(href="#").report__title 500 злобных карт тестировщика или изучение тестирования в игровой
+								.report__text
+									.text-block
+										p В последнее время технология Change Data Capture набирает популярность: о ней пишут на Хабрахабре, рассказывают на профессиональных конференциях для разработчиков. А раз об этом думают разработчики, скоро и нам, тестировщикам, придет время тестировать корректность работы CDC на наших проектах. В своем докладе я расскажу о том, что такое Change Data Capture, на что...
+								.report__bottom
+									ul.report__info
+										li
+											+parameter({icon: 'lvl-hard', value: 'Сложный'})
+										li
+											+parameter({value: '40 мин'})
+										li
+											+parameter({
+												value: 'SQA Days /26',
+												long: true,
+												class_name: 'tablet-hide',
+											})
+									ul.report__controls
+										li
+											+parameter({icon: 'like-icon', value: '1', link: true})
+										li
+											+parameter({icon: 'comment-icon', value: '1', link: true})
+										li
+											+parameter({
+												value: 'Поделиться',
+												link: true,
+												long: true,
+												class_name: 'js__show-social mobile-hide'
+											})
+											+socialShare()
+
+						//report
+					//li
+					li
+						.report
+							.report__inner
+								.report__date 17.09.2017
+								a(href="#").report__title Автоматизация визуального тестирования для кодеров и не-кодеров. Ускорение деплоймента качественного функционала
+								.report__text
+									.text-block
+										p В последнее время технология Change Data Capture набирает популярность: о ней пишут на Хабрахабре, рассказывают на профессиональных конференциях для разработчиков. А раз об этом думают разработчики, скоро и нам, тестировщикам, придет время тестировать корректность работы CDC на наших проектах.
+								.report__bottom
+									ul.report__info
+										li
+											+parameter({icon: 'lvl-medium', value: 'Средний'})
+										li
+											+parameter({value: '90 мин'})
+										li
+											+parameter({
+												value: 'SQA Days /26',
+												long: true,
+												class_name: 'tablet-hide',
+											})
+									ul.report__controls
+										li
+											+parameter({icon: 'like-icon', value: '1', link: true})
+										li
+											+parameter({icon: 'comment-icon', value: '1', link: true})
+										li
+											+parameter({
+												value: 'Поделиться',
+												link: true,
+												long: true,
+												class_name: 'js__show-social mobile-hide'
+											})
+											+socialShare()
+						//report
+					//li
+					li.opacity-block
+						.report
+							.report__inner
+								.report__date 17.09.2017
+								a(href="#").report__title Codeless-инструменты для автоматизации тестирования: в поисках лучшего решения
+								.report__text
+									.text-block
+										p В последнее время технология Change Data Capture набирает популярность: о ней пишут на Хабрахабре, рассказывают на профессиональных конференциях для разработчиков.
+								.report__bottom
+									ul.report__info
+										li
+											+parameter({icon: 'lvl-easy', value: 'Простой'})
+										li
+											+parameter({value: '40 мин'})
+										li
+											+parameter({
+												value: 'SQA Days /26',
+												long: true,
+												class_name: 'tablet-hide',
+											})
+									ul.report__controls
+										li
+											+parameter({icon: 'like-icon', value: '1', link: true})
+										li
+											+parameter({icon: 'comment-icon', value: '1', link: true})
+										li
+											+parameter({
+												value: 'Поделиться',
+												link: true,
+												long: true,
+												class_name: 'js__show-social mobile-hide'
+											})
+											+socialShare()
+						//report
+					//li
+
+				//report-list
+				.show-more-block
+					+controlLine([{name: 'Показать все'}])
+			//container
+		//block-default
+	//section-default

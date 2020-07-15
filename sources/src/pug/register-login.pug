@@ -1,0 +1,36 @@
+extends base/_layout
+block head
+	title Login
+	- var disableTicketBtn = true
+block page
+
+	section.section-default
+		.container
+			+breadcrumbs(['Главная', 'Билеты', 'Регистрация '])
+			.title-default Регистрация участников SQA Days
+				| #{' '}
+				span.blue /
+				| 26
+		- var currentStep = 1
+		include include/steps-block
+		.container
+			.form-container
+				.form-container-message
+					| Для регистрации на конференцию вам нужно авторизоваться в аккаунт it-conf
+				form.form
+					.form-line
+						+labelForm({label_name: 'Логин'})
+					.form-line
+						a(href="#").attached-link Забыли пароль?
+						+labelForm({label_name: 'Пароль', input_type: 'password'})
+					.form-bottom
+						button(type="submit").btn.btn-default
+							span Войти
+				.form-container-message
+					| Нет аккаунта?
+					| #{' '}
+					a(href="#") Зарегестрируйтесь
+		//container
+		+controlLine([{name: 'Вконтакте', className: 'vk', icon: 'vk-social', target: "_blank"}, {name: 'Facebook', className: 'fb', icon: 'fb-social', target: "_blank"}],'control-line-mobile-nowrap',{text: 'Или используйте соцсети', class_quote: ''})
+	//section-default
+	include include/partners-section

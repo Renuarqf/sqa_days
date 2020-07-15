@@ -1,0 +1,64 @@
+extends base/_layout
+block head
+	title Notification
+	- var disableTicketBtn = true
+block page
+
+	section.section-default
+		.container
+			+breadcrumbs(['Главная', 'Билеты', 'Регистрация'])
+			.title-default Позже = дороже
+			.register-notification__info
+				.register-notification__title Через 15 дней цены повысятся
+				.register-notification__text
+					.text-block
+						p Мы можем отправить вам напоминание за
+							| #{' '}
+							strong.nowrap 3 дня
+							| #{' '}
+							| до повышения цены
+							br
+							| удобным для вас способом
+
+		+radioBlock([{
+			name: 'По e-mail',
+			text: 'Отправим вам письмо с ссылкой на оплату',
+			data_notification: 'email',
+			checked: true
+		}, {
+			name: 'Через мессенджер',
+			text: 'Vkontakte, facebook, telegram, viber, whatsApp и другие',
+			data_notification: 'messenger'
+		}, {
+			name: 'Через смс сообщение',
+			text: 'Отправим вам смс с ссылкой на оплату в любую стану мира',
+			data_notification: 'sms'
+		}], 'radio-list-column-tablet')
+
+		.notification-block
+			.container
+				.notification-option(data-notification="email" style="display: block;")
+					.form-container
+						.form
+							.form-line
+								+labelForm({label_name: 'Email', required: true, input_type: 'email'})
+				.notification-option(data-notification="messenger")
+					.form-container
+						.form
+							.form-line
+								+customSelect({
+									label_name: 'Выберите мессенджер',
+									required: true
+								},['Vkontakte', 'Facebook', 'Telegram', 'Viber', 'WhatsApp', 'Другие'])
+							.form-line
+								+labelForm({label_name: 'Ссылка на профиль', required: true, placeholder: 'https://vk.com/youre profile'})
+
+				.notification-option(data-notification="sms")
+					.form-container
+						.form
+							.form-line
+								+labelForm({label_name: 'Номер телефона', required: true, input_type: 'tel'})
+
+
+		+controlLine([{name: 'вернуться к оплате'},{name: 'напомнить', className: 'control-link-blue'}], 'control-line__mobile-revers')
+	//section-default

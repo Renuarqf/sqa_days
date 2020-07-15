@@ -1,0 +1,67 @@
+$cp: 10rem;
+$cp-xs: 5rem;
+$container-width: 172rem;
+$container-width-px: 1720px;
+
+
+// Grid
+$width_lg: 1170px;
+$width_md: 991px;
+$width_xs: 767px;
+$width_mob: 500px;
+
+$grid-width: 1170px;
+$grid-gutter: 30px;
+$grid-columns: 12;
+
+//colors
+$color-main: #084ED4;
+$text-color: #0B0C1B;
+$base-color: $text-color;
+$base-bg: #fff;
+
+$hover-color: #0B0C1B;
+
+$red: #F71B1B;
+$white: #fff;
+$black: #000;
+$grey: #85858D;
+$border-grey: #AAAAAA;
+$placeholde-color: rgba(11,12,27,.3);
+$footer-payment: #797777;
+$footer-bg: #090A17;
+$light-bg: #FAFAFA;
+$input-border: #D3D3D3;
+$add-plus-color: #C4C4C4;
+
+$error-bg: rgba(247, 27, 27, 0.1);;
+
+$ff-ibmPlexSans: 'IBM Plex Sans';
+$font-default: $ff-ibmPlexSans, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+
+// custom grid
+$full-hd: 1920px;
+$desctop-lg: 1600px;
+$desktop-xs: 1280px;
+$table-screen: 1023px;
+$mobile-screen: 767px;
+
+$fast-anim:.4s;
+$anim: 0.5s;
+
+$header-delay:.4s;
+
+@mixin shadowBorder(){
+  box-shadow: 1px -1px 0 $border-grey, inset  1px -1px 0 $border-grey;
+}
+@mixin shadowBorderActive(){
+  box-shadow: 1px -1px 0 $color-main, inset  1px -1px 0 $color-main;
+}
+
+
+//@include rmin($table-screen) {
+//
+//}// min $table-screen
+
+

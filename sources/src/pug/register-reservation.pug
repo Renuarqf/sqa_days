@@ -1,0 +1,23 @@
+extends base/_layout
+block head
+	title Reservation
+	- var disableTicketBtn = true
+block page
+
+	section.section-default.section-default-padding
+		.container
+			+breadcrumbs(['Главная', 'Билеты', 'Информация о бронировании '])
+			.title-default Информация о бронировании
+			.form-container
+				.form-container-message
+					| Если Вы или Ваш менеджер бронировали место на конференцию и у Вас имеется код брони, введите его для того, чтобы заполнить необходимые для участника данные и занять место на конференции
+				.form-error-message
+					| Проверьте правильность введенного кода; если ошибка повторяется, обратитесь к менеджеру, который бронировал место
+				form.form
+					.form-line
+						+labelForm({label_name: 'Код брони'})
+					.form-bottom
+						button(type="submit").btn.btn-default
+							span Подтвердить бронь
+		//container
+	//section-default

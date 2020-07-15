@@ -1,0 +1,175 @@
+extends base/_layout
+block head
+	title Main
+	- var disableTicketBtn = true
+block page
+	include include/home-aside
+	section.section-main.dark-section
+		.section-main__bg(style="background-image:url(images/content/bg/bg-1.jpg)")
+		.container
+			.section-main__inner
+				.section-main__data
+					.section-main__title SQA Days
+						| #{' '}
+						span.blue /
+						| #{' '}
+						| 26
+					.section-main__description Международная конференция по вопросам качества программного обеспечения
+					.section-main__dates 15-16 ноября 2019
+					.section-main__location
+						a(href="#place").js__interactive Минск, Проспект Победителей 20, Отель "Мариотт"
+		//container
+		.section-main__bottom
+			.actions__list
+				.action__one
+					.action__head
+						span.text-icon
+							img( src="images/content/hand-icons/hand-1.png" alt="")
+						| #{' '}
+						| По текущей цене до 31.12.2019
+					.action__main
+						a(href="tickets.html").action__link
+							span Купить билеты
+				.action__one
+					.action__head
+						span.text-icon
+							img( src="images/content/hand-icons/hand-2.png" alt="")
+						| #{' '}
+						| До 29.02.2020 включительно
+					.action__main
+						a(href="#").action__link.action__link-dark
+							span Подать доклад
+		//section-main__bottom
+	//section-main
+	section.section-other-events
+		.section-other-events__inner
+			mixin eventOther(name, date, location)
+				.event
+					a(href="#").event__link=name
+					.event__date=date
+					.event__location=location
+			.container
+				.other-events-block
+					.other-events__title Наши другие мероприятия:
+					.other-events__list
+						li
+							+eventOther('SQA Days EU /2','20-21 марта  2020 ','Варшава, Польша')
+						li
+							+eventOther('SQA Days #27','15-16 мая 2020 ','Москва, Россия')
+				//other-events-block
+			//container
+	//section-other-events
+
+	section.section-about.dark-section
+		mixin aboutCountData(value, name, links )
+			.count-data
+				.count-data__value= value
+				.count-data__name= name
+				ul.count-data__links
+					each val, index in links
+						li
+							a(href="#").count-data__link= val
+		.container
+			.section__title.section__title-white О конференции
+			ul.about-menu
+				li
+					a(href="#place").link.js__interactive
+						span Место проведения
+				li
+					a(href="#").link
+						span Организаторы
+				li
+					a(href="#visa").link.js__interactive
+						span Визовые вопросы
+				li
+					a(href="#").link
+						span Контакты
+			.about-info
+				.about-description 15-16 ноября 2019 г. в Минске пройдет 26-я международная конференция в области обеспечения качества ПО «Software Quality Assurance Days».
+				.text-block
+					p.text-center Приглашаем вас принять участие в работе 26-й Международной конференции специалистов в области обеспечения качества ПО – SQA Days.
+			.video-block
+				.video-home
+					video(loop="loop" muted).video-self
+						source(src="images/video/video.mp4" type='video/mp4')
+					.video-block__preview(style="background-image:url(images/content/video-preview-1.jpg)")
+			ul.about-count-list
+				li
+					+aboutCountData('56','докладов', ['Посмотреть все доклады', 'Подать доклад'])
+				li
+					+aboutCountData('9','секций', ['Посмотреть расписание', 'Все организаторы'])
+				li
+					+aboutCountData('3000','участников', ['Посмотреть всех участников'])
+		//container
+	//section-about
+
+	section.section-main-speakers
+		mixin mainSpeakerSingle(name, photo, post, location, presentation, activeClass)
+			.speaker(class=activeClass)
+				.speaker__photo(style="background-image:url(images/content/speakers/speaker-"+photo+".jpg)")
+				a(href="#close").close-speaker-preview
+					svg.icon
+						use(xlink:href="#close-icon")
+				.speaker__info
+					a(href="#").speaker__name= name
+					.speaker__post= post
+					.speaker__location= location ? location : 'Lorem, Ipsum'
+					.speaker__presentation= presentation ? presentation : 'Lorem ipsum dolor'
+				a(href="#view").speaker__view
+		.container
+			.section__title.section__title-white Спикеры
+				| #{' '}
+				span.nowrap SQA Days / 26
+		//container
+		.main-speakers-block
+			- var n = 0;
+			- var imgNum = 0;
+			- var activeClass = ''
+			ul.main-speakers__list
+				while n < 48
+					- n++
+					- imgNum++
+					if imgNum > 21
+						- imgNum = 1
+					if n === 1000
+						- activeClass = 'view-speaker'
+					else
+						- activeClass = ''
+					li(class=n>20 ? 'hide-mobile': '' class=n>30 ? 'hide-tablet': '' class=n>32 ? 'hide-desktop-xs': '')
+						+mainSpeakerSingle('Наталия Борисова-Медведкова', imgNum,'69pixels', 'Minsk, Belarus', 'Minimum Valuable Product в автоматизации тестирования', activeClass)
+		+controlLine([{name: 'Все спикеры (69)'}])
+	//section-speakers
+
+	- var showAllPartners = false;
+	- var partnersOnMain = true;
+	include include/partners-section
+
+	section.section-main-news
+		.container
+			.section__title Новости
+		//container
+		ul.news-list
+			li
+				+newsOne('Комфортный нетворкинг с кипишологом', '31.10.2019','Информация о нетворкинге и квесте на конференции. и ещё немного длинного описания на всякий случай')
+			li
+				+newsOne('Банк ВТБ - платиновый партёр конференции SQA Days #26 рамках конференции будут представлены', '31.10.2019','ВТБ расширяет свою ИТ экспертизу и в рамках конференции будут представлены интересные решения...')
+			li.hide-tablet
+				+newsOne('Мы запустили новый сайт', '31.10.2019','Информация о нетворкинге и квесте на конференции. и ещё немного длинного описания на всякий случай')
+		//news-list
+		+controlLine([{name: 'все новости'}])
+	//section-main-news
+	section.section-main-social
+		.container
+			.section__title Общайся там где тебе удобно
+		//container
+		+controlLine([{name: 'Telegram chat', target: '_blank'}, {name: 'Вконтакте', target: '_blank'}, {name: 'Twitter', target: '_blank'}, {name: 'Facebook', target: '_blank'}])
+	//section-main-social
+	section.banner-section
+		.container.container-wide
+			.banner-ticket
+				.banner-ticket__text 5 дней до повышения стоимости билетов
+				.banner-ticket__control
+					a(href="#").btn.btn-buy
+						span купить билеты
+		//container
+	//banner-section

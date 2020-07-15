@@ -1,0 +1,44 @@
+extends base/_layout
+block head
+	title Media
+block page
+
+
+	section.section-default
+		include include/select-dates
+		.container
+			+breadcrumbs(['Главная', 'Медиа'])
+			.title-default Медиа
+				| #{' '}
+				a(href="#select-date").title-select.js__show-select-dates SQA Days / 26
+
+		//container
+		+tabLine([
+			{name: 'Видео', className: 'active'},
+			{name: 'Презентации'},
+			{name: 'Фото'},
+			{name: 'Telegram'},
+		])
+		.media-main-block
+			.container
+				- var searchBarPlaceholder = 'Поиск по материалам'
+				include include/search-bar
+			ul.media-list.video-list.media-list-margin-bottom
+				li
+					+mediaFigure({title: 'Предварительные выводы неутешительны:.', photo: 'video-preview-1', author: 'Bessie Fox', link: 'images/video/video.mp4', gallery: 'video-gallery'})
+				li
+					+mediaFigure({title: 'Не следует, однако, забывать, что.', photo: 'video-preview-2', author: 'Soham Webb', link: 'https://www.youtube.com/watch?v=_sI_Ps7JSEk', gallery: 'video-gallery'})
+				li
+					+mediaFigure({title: 'Банальные, но неопровержимые выводы.', photo: 'video-preview-3', author: 'Kathryn Mccoy', link: 'images/video/video.mp4', gallery: 'video-gallery'})
+				li
+					+mediaFigure({title: 'Как уже неоднократно упомянуто.', photo: 'video-preview-4', author: 'Audrey Fisher', link: 'images/video/video.mp4', gallery: 'video-gallery'})
+				li
+					+mediaFigure({title: 'Ключевые особенности структуры.', photo: 'video-preview-5', author: 'Morris Robertson', link: 'https://www.youtube.com/watch?v=_sI_Ps7JSEk', gallery: 'video-gallery'})
+				li
+					+mediaFigure({title: 'Приятно, граждане, наблюдать, как.', photo: 'video-preview-6', author: 'Shane Jones', link: 'https://vimeo.com/191947042', gallery: 'video-gallery'})
+
+			include include/pagination
+	//section-default
+
+
+	include include/partners-section

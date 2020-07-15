@@ -1,0 +1,131 @@
+header.header.notification-mode
+	.header__menu-bg
+		.menu__bg-right
+		.menu__bg-left
+	.container.container-wide
+		.header__inner
+			.logo__wrap
+				a(href="index.html").logo
+					.logo__title sqa
+					.logo__name days / 26
+			if !disableTicketBtn
+				.header-mobile-btn__wrap
+					a(href="tickets.html").btn.header-mobile-btn
+						span Билеты
+			ul.header-controls
+				li
+					.header-profile
+						.profile-info
+							.profile__name Alex
+							a(href="#").profile__action Выйти
+						.profile__icon
+							svg.icon
+								use(xlink:href="#profile-icon")
+				li
+					.notification
+						a(href="#show-notifications").notification__icon.js__interactive
+							svg.icon
+								use(xlink:href="#notification-icon")
+						.notification-content
+							mixin notificationSingle(title, text, time)
+								.notification-single
+									.notification-single__inner
+										.notification-single__title= title
+										.notification-single__text= text
+										.notification-single__time= time
+							.nc__content
+								.nc__head
+									.nc__title Уведомления
+									a(href="#clear-notifications").nc__clear.js__interactive Очистить
+								.notification__list
+									+notificationSingle('Название разовой акции','Описание разовой акциии может даже на две строки но это не точно','20 минут назад')
+									+notificationSingle('John Doe','Привет! Мне очень понравился твой доклад, интересно было бы узнать у тебя о нем некото...','40 минут назад')
+									+notificationSingle('Название разовой акции','Описание разовой акциии может даже на две строки но это не точно','Сегодня')
+								a(href="#").nt__view-all
+									span Посмотреть все
+							.nc__empty
+								.nc__empty-text У вас нет новых уведомлений
+
+			a(href="#").aside-menu__toggle
+			a(href="#").menu__toggle
+				.line.top
+				.line.mid
+				.line.bot
+			.header__menu
+				.container.container-wide
+					.menu__inner
+						.menu__aside
+							ul.header-aside-menu
+								li
+									a(href="#").active SQA days
+								li
+									a(href="#") Analytics days
+								li
+									a(href="#") ADD
+								li
+									a(href="#") SQA days EU
+								li
+									a(href="#") Analytics days EU
+						.menu__block
+							ul.main-menu
+								li
+									//can add class active to link
+									a(href="#") Участники (69)
+								li
+									a(href="#") Доклады (9)
+								li
+									a(href="#") Программа
+							.header-btn__wrap(class=!disableTicketBtn ? 'show-always-btn': '')
+								a(href="tickets.html").btn.btn-header
+									span Билеты
+							ul.header-submenu
+								li
+									a(href="#") Визовые вопросы
+								li
+									a(href="#") Партнерам
+								li
+									a(href="#") Докладчикам
+								li
+									a(href="#") Организаторы
+								li
+									a(href="#") Медиа
+								li
+									a(href="#") Новости
+								li
+									a(href="#") Контакты
+							.header-action
+								.header-search
+									form.hs-block
+										a(href="#search-toggle").hs-block__toggle
+										button(type="submit").hs-block__icon
+											svg.icon
+												use(xlink:href="#search-icon")
+										.hs-block__label
+											input(type="text" name="search" placeholder="Найти на сайте").hs-block__input
+								.header-lang
+									a(href="#change-language").lang-menu__toggle
+									.lang-menu__wrap
+										.lang-menu__liner
+											ul.lang-menu
+												li.active-elem
+													a(href="#").active ru
+												li
+													a(href="#") en
+												li
+													a(href="#") de
+												li
+													a(href="#") pl
+							ul.header-social
+								li
+									a(href="#" target="_blank") Vkontakte
+								li
+									a(href="#" target="_blank") Twitter
+								li
+									a(href="#" target="_blank") Facebook
+						//menu__main
+				//container
+			//header__menu
+	//container
+//header
+
+

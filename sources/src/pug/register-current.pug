@@ -1,0 +1,129 @@
+extends base/_layout
+block head
+	title Step 1
+	- var disableTicketBtn = true
+block page
+
+	section.section-default
+		.container
+			+breadcrumbs(['Главная', 'Билеты', 'Все регистрации'])
+			.title-default Регистрация участников SQA Days
+				| #{' '}
+				span.blue /
+				| 26
+		- var currentStep = 1
+		include include/steps-block
+		.block-default
+			.container
+				.subtitle-default У вас есть назавершенные регистрации (2)
+				.register-slider__wrap
+					.register-slider
+						.register-card-slide
+							.register-card
+								.register-card__inner
+									.rc__top
+										.rc__info
+											.rc__title Как регистратор
+											.rc__text Ожидается оплата (BYN, bePaid)
+										.rc__date
+											span.date 20.11.2019
+											span.time 10:59
+									.rc__body
+										.rc__info
+											.rc__title Список участников(6):
+											.rc__text Alex Bavdey, 69testers,Minsk, Belarus
+											.rc__text Ivan Zenkovich, 69testers,Minsk, Belarus
+											.rc__show-all
+												a(href="#").show-all показать всех...
+									.rc__bottom
+										.action-one.action-one-sm
+											button.btn.btn-default.btn-sm.btn-grey
+												span Удалить
+										.action-one
+											button.btn.btn-default.btn-sm
+												span Продолжить
+						.register-card-slide
+							.register-card
+								.register-card__inner
+									.rc__top
+										.rc__info
+											.rc__title Как докладчик
+											.rc__text Участие бесплатно, если доклад принят.
+										.rc__date
+											span.date 20.11.2019
+											span.time 10:59
+									.rc__body
+										.rc__info
+											.rc__title Докладчик:
+											.rc__text Alex Bavdey, 69testers,Minsk, Belarus
+									.rc__bottom
+										.action-one.action-one-sm
+											button.btn.btn-default.btn-sm.btn-grey
+												span Удалить
+										.action-one
+											button.btn.btn-default.btn-sm
+												span Продолжить
+			//container
+			+controlLine([{name: 'Новая регистрация', className: 'control-link-blue'}])
+		//block-default
+		.block-default
+			.container
+				.subtitle-default Завершенные регистрации (3)
+				.register-slider__wrap
+					.register-slider
+						.register-card-slide
+							.register-card
+								.register-card__inner
+									.rc__top
+										.rc__info
+											.rc__title Как регистратор
+											.rc__text Ожидается оплата (BYN, bePaid)
+										.rc__date
+											span.date 20.11.2019
+											span.time 10:59
+									.rc__body
+										.rc__info
+											.rc__title Список участников(6):
+											.rc__text Alex Bavdey, 69testers,Minsk, Belarus
+											.rc__text Ivan Zenkovich, 69testers,Minsk, Belarus
+											.rc__show-all
+												a(href="#").show-all показать всех...
+									.rc__bottom
+										.action-one
+											button.btn.btn-default.btn-sm
+												span Просмотреть
+						.register-card-slide
+							.register-card
+								.register-card__inner
+									.rc__top
+										.rc__info
+											.rc__title Как докладчик
+											.rc__text Участие бесплатно, если доклад принят.
+										.rc__date
+											span.date 20.11.2019
+											span.time 10:59
+									.rc__body
+										.rc__info
+											.rc__title Докладчик:
+											.rc__text Alex Bavdey, 69testers,Minsk, Belarus
+									.rc__bottom
+										.action-one
+											button.btn.btn-default.btn-sm
+												span Просмотреть
+						.register-card-slide
+							.register-card
+								.register-card__inner
+									.rc__top.rc__top-none-bg
+										.rc__info
+											.rc__title-info Вас зарегестрировал пользователь
+											.rc__title-info Olga  Borisevich
+										.rc__date
+											span.date 20.11.2019
+											span.time 10:59
+									.rc__bottom
+										.action-one
+											button.btn.btn-default.btn-sm
+												span Просмотреть
+			//container
+		//block-default
+	//section-default

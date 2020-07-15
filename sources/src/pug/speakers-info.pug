@@ -1,0 +1,72 @@
+extends base/_layout
+block head
+	title Information for speakers
+block page
+	section.section-default
+		.container
+			+breadcrumbs(['Главная', 'Докладчикам'])
+			.title-default Докладчикам
+		//container
+		ul.spi__list
+			li
+				.spi.spi-grey
+					.spi__inner
+						.spi__title
+							span 29
+							sub февраля
+						.spi__subtitle Последний срок подачи докладов и презентаций
+						.spi__addit (дополнительно к докладам могут идти сопроводительные материалы)
+						.spi__comment Презентации могут предоставляться в черновом варианте для ознакомления программным комитетом. Финальные презентации должны быть предоставлены за 7 дней до начала мероприятия.
+			li
+				.spi.spi-dark
+					.spi__inner
+						.spi__title
+							span 08
+							sub марта
+						.spi__subtitle Последний срок подачи окончательных аннотаций
+						.spi__addit (пойдут в публикацию в сборнике)
+			li
+				.spi
+					.spi__inner
+						.spi__title
+							sub до
+							span 15
+							sub марта
+						.spi__subtitle Оповещение о принятии докладов
+		.block-default
+			.container
+				.blue-info
+					.blue-info__part.part-left
+						.blue-info__subtitle Информация докладчикам
+						.text-block
+							p Докладчики, включенные в программу, участвуют в конференции и всех активностях, включая ужин для докладчиков накануне конференции, бесплатно!
+							p Докладчики со статусом доклада "Отказ" могут принять участие в конференции по цене на дату регистрации.
+							p Докладчики, которые взяли самоотвод или не подали доклад, могут принять участие в конференции по цене, действующей в текущий период.
+							p
+								a(href="#")
+									strong Проезд и проживание оплачиваются докладчиками самостоятельно.
+							p
+								a(href="#")
+									strong Со-докладчики оплачиваются по полной стоимости.
+					.blue-info__part.part-right
+						.blue-info__subtitle Полезная информация
+						ul.blue-info__list
+							li
+								a(href="#" target="_blank").link-beauty
+									span Инструкция как подать доклад
+							li
+								a(href="#" target="_blank").link-beauty
+									span Памятка авторам докладов
+							li
+								a(href="#" target="_blank").link-beauty
+									span Рекомендации по оформлению презентации
+							li
+								a(href="#" target="_blank").link-beauty
+									span Тематики и типы докладов
+				//blue-info
+				+controlLine([{name: 'подать доклад', className: 'control-link-blue'}])
+			//container
+		//block-default
+	//section-default
+	include include/partners-section
+

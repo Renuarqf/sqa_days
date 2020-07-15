@@ -1,0 +1,113 @@
+extends base/_layout
+block head
+	title Participants
+block page
+
+
+	section.section-default
+		include include/select-dates
+		.container
+			+breadcrumbs(['Главная', 'Участники'])
+			.title-default Участники
+				| #{' '}
+				a(href="#select-date").title-select.js__show-select-dates SQA Days / 26
+
+		//container
+		+tabLine([
+			{name: 'Все участники (200)', className: 'active'},
+			{name: 'Докладчики (46)'},
+			{name: 'Программный комитет (12)'},
+			{name: 'Избранное (5)', icon: 'favorite-icon'},
+		])
+		.container
+			- var searchBarPlaceholder = 'Найти участников'
+			include include/search-bar
+		mixin participant(obj)
+			.participant
+				.participant__photo-wrap
+					.participant__photo(style="background-image:url(images/content/speakers/speaker-"+obj.photo+".jpg)")
+				.participant__inner
+					.participant__data
+						a(href="#").participant__name=obj.name ? obj.name : 'Zack Fox'
+						.participant__post=obj.post ? obj.post : 'Johnson & Johnson'
+						.participant__location=obj.location ? obj.location : 'Heard Island'
+					ul.participant__controls
+						li
+							a(href="#").ctrl-one
+								.ctrl-one__icon
+									svg.icon
+										use(xlink:href="#meet-icon")
+								.ctrl-one__name
+									.name Встретиться
+						li
+							a(href="#").ctrl-one
+								.ctrl-one__icon
+									svg.icon
+										use(xlink:href="#mail-icon")
+								.ctrl-one__name
+									.name Написать
+						li
+							a(href="#").ctrl-one.js__add-to-favorite
+								.ctrl-one__icon
+									svg.icon.default-icon
+										use(xlink:href="#favorite-icon")
+									svg.icon.activated-icon
+										use(xlink:href="#favorite-filled-icon")
+								.ctrl-one__name
+									.name.default-name В избранное
+									.name.activated-name В избранном
+		.participant-list__wrap
+			ul.participant-list
+				li
+					+participant({photo: 2, name: 'Jane Williamson', post:'Nintendo', location: 'Bolivia (Plurinational State of)'})
+				li
+					+participant({photo: 3, name: 'Gregory Alexander', post:'', location: 'Heard Island and McDonald Islloremsdasdff'})
+				li
+					+participant({photo: 4, name: 'Gloria Mccoy', post:'', location: ''})
+				li
+					+participant({photo: 5, name: 'Shawn Fisher', post:'', location: ''})
+				li
+					+participant({photo: 6, name: 'Гжегош Бжежинщикевич', post:'', location: ''})
+				li
+					+participant({photo: 7, name: 'Guy Lane', post:'', location: ''})
+				li
+					+participant({photo: 8, name: 'Остап-Сулейман-Берта- Мария-Бендер-бей', post:'', location: ''})
+				li
+					+participant({photo: 9, name: '', post:'', location: ''})
+				li
+					+participant({photo: 10, name: 'Ronald Hawkins', post:'', location: ''})
+				li
+					+participant({photo: 11, name: 'Marvin Watson', post:'', location: ''})
+				li
+					+participant({photo: 12, name: '', post:'', location: ''})
+				li
+					+participant({photo: 13, name: '', post:'', location: ''})
+				li
+					+participant({photo: 14, name: '', post:'', location: ''})
+				li
+					+participant({photo: 15, name: '', post:'', location: ''})
+				li
+					+participant({photo: 16, name: '', post:'', location: ''})
+				li
+					+participant({photo: 17, name: '', post:'', location: ''})
+				li
+					+participant({photo: 18, name: '', post:'', location: ''})
+				li
+					+participant({photo: 19, name: '', post:'', location: ''})
+				li
+					+participant({photo: 20, name: '', post:'', location: ''})
+				li
+					+participant({photo: 21, name: '', post:'', location: ''})
+				li
+					+participant({photo: 22, name: '', post:'', location: ''})
+				li
+					+participant({photo: 1, name: '', post:'', location: ''})
+				li
+					+participant({photo: 2, name: '', post:'', location: ''})
+				li
+					+participant({photo: 3, name: '', post:'', location: ''})
+		include include/pagination
+	//section-default
+
+
+	include include/partners-section

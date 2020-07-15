@@ -1,0 +1,25 @@
+extends base/_layout
+block head
+	title Program
+block page
+
+
+	section.section-default.section-default-full-height
+		include include/select-dates
+		.container
+			+breadcrumbs(['Главная', 'Программа'])
+			.title-default Программа
+				| #{' '}
+				a(href="#select-date").title-select.js__show-select-dates SQA Days / 26
+
+			.program-empty
+				.program-empty__img
+					img( src="images/content/info-images/empty-program.svg" alt="")
+				.program-empty__message Программа формируется
+				.program-empty__text Вы можете ознакомиться в поданными докладами в разделе "Доклады"
+		//container
+		+controlLine([{name: 'Перейти в доклады', className: 'control-link-blue'}])
+	//section-default
+
+
+	include include/partners-section

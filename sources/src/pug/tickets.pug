@@ -1,0 +1,63 @@
+extends base/_layout
+
+block head
+	title Tickets
+	- var disableTicketBtn = true
+block page
+	section.section-default
+		.container
+			+breadcrumbs(['Главная', 'Билеты'])
+			.title-default Билеты
+				| #{' '}
+				span.nowrap SQA Days
+					| #{' '}
+					span.blue /
+					| 26
+		//container
+		mixin ticketPriceOne(value, deadline, currentPrice)
+			.tickets-price__one(class=currentPrice ? 'current' : '')
+				if (currentPrice)
+					ul.tp__tab
+						li
+							a(href="#").js__change-ticket-tab.active Физические лица
+						li
+							a(href="#").js__change-ticket-tab Юридические лица
+				.tp__inner
+					.tp__price
+						.tp__value= value
+						if (!currentPrice)
+							.tp__currency byn
+						else
+							ul.tp__currency-list
+								li
+									a(href="#").active byn
+								li
+									a(href="#") usd
+								li
+									a(href="#") eur
+								li
+									a(href="#") rub
+								li
+									a(href="#") pln
+					.tp__deadline= deadline
+					if (currentPrice)
+						.tp__button
+							a(href="#").btn.btn-default
+								span купить билет
+		// end mixin ticketPriceOne
+		.tickets-price-line
+			+ticketPriceOne('550', 'до 30 Ноября 2019')
+			+ticketPriceOne('600', 'до 30 Декабря 2019', true)
+			+ticketPriceOne('800', 'до 31 Января 2020')
+			+ticketPriceOne('900', 'до 29 Февраля 2020')
+			+ticketPriceOne('1100', 'до 31 Марта 2020')
+			+ticketPriceOne('1300', 'с 1 Апреля 2020')
+	//section-default
+	section.section-default
+		.container
+			.title-default Частые вопросы
+		//container
+		include include/faq-block
+	//section-default
+	include include/partners-section
+

@@ -1,0 +1,130 @@
+.steps-block {
+  display: block;
+  width: 100%;
+  margin: 0 0 2.4rem;
+
+  @include r($mobile-screen) {
+    margin: 0 0 1.6rem;
+  }
+  & + .block-default {
+    margin-top: -2.4rem;
+    padding-top: 10rem;
+
+    @include r($desktop-xs) {
+      padding-top: 6.4rem;
+    }
+    @include r($table-screen) {
+      padding-top: 3.2rem;
+    }
+
+    @include r($mobile-screen) {
+      padding-top: 2.4rem;
+      margin-top: -1.6rem;
+    }
+  }
+}//steps-block
+
+.steps-list {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: stretch;
+  margin: 0;
+  padding: 0;
+  background: $light-bg;
+
+  & > li {
+    display: block;
+    width: 100%;
+    position: relative;
+
+    &:first-child {
+      .step-one {
+        &:before {
+          left: -50%;
+        }
+      }
+    }
+    &:last-child {
+      .step-one {
+        &:before {
+          right: -50%;
+        }
+      }
+    }
+  }
+  .step-one {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 1px;
+    min-height: 7.2rem;
+    position: relative;
+    font-size: 2rem;
+    line-height: 1;
+    font-weight: bold;
+    color: $grey;
+    cursor: default;
+    white-space: nowrap;
+
+    &:before {
+      content: '';
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: $color-main;
+      transform: skewX(-15deg);
+      transform-origin: 50%;
+    }
+    span {
+      position: relative;
+    }
+
+    .number {
+      margin-right: .4rem;
+    }
+
+    &:not(.done):not(.current) {
+      span {
+        opacity: .4;
+      }
+    }
+
+    &.done {
+      color: $text-color;
+
+    }
+    &.current {
+      color: $white;
+      padding: 0 2rem;
+      &:before {
+        display: block;
+      }
+    }
+  }//step-one
+  @include r($table-screen) {
+    .step-one {
+      font-size: 1.8rem;
+      min-height: 6.6rem;
+    }
+  }//$table-screen
+  @include r($mobile-screen) {
+    .step-one {
+      font-size: 1.6rem;
+      min-height: 5.6rem;
+
+      &:not(.current) {
+        .number {
+          margin-right: 0;
+        }
+        .name {
+          display: none;
+        }
+      }
+    }//step-one
+  }//$mobile-
+}//steps-list

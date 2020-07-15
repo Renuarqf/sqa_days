@@ -1,0 +1,18 @@
+extends base/_layout
+block head
+	title Registration Done
+	- var disableTicketBtn = true
+block page
+
+	section.section-default
+		.container
+			+breadcrumbs(['Главная', 'Билеты', 'Регистрация'])
+			.title-default Регистрация успешна
+			.register-result
+				.register-result__message Ждём вас на конференции
+				.register-result__img
+					img( src="images/content/info-images/done.svg" alt="")
+			//register-result
+		//container
+		+controlLine([{name: 'Обсудить в telegram'},{name: 'Посмотреть программу', className: 'control-link-blue'}], 'control-line__mobile-revers')
+	//section-default

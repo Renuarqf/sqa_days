@@ -1,0 +1,42 @@
+extends base/_layout
+block head
+	title Media
+block page
+
+
+	section.section-default
+		include include/select-dates
+		.container
+			+breadcrumbs(['Главная', 'Медиа'])
+			.title-default Медиа
+				| #{' '}
+				a(href="#select-date").title-select.js__show-select-dates SQA Days / 26
+
+		//container
+		+tabLine([
+			{name: 'Видео'},
+			{name: 'Презентации', className: 'active'},
+			{name: 'Фото'},
+			{name: 'Telegram'},
+		])
+		.media-main-block
+			.container
+				- var searchBarPlaceholder = 'Поиск по материалам'
+				include include/search-bar
+				ul.media-list.presentation-list.media-list-margin-bottom
+					- for (var i = 1; i < 13; i++)
+						li
+							.media-presentation-wrap
+								+mediaFigure({
+									photo: 'presentation-preview-1',
+									link: 'https://sqadays.com/ru/slides-78021-47506.htm',
+									gallery: 'presentation-gallery',
+									type: 'iframe',
+									presentation: {},
+								})
+
+			include include/pagination
+	//section-default
+
+
+	include include/partners-section

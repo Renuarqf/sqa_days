@@ -1,0 +1,175 @@
+mixin breadcrumbs(arr)
+	.breadcrumbs__wrap
+		ul.breadcrumbs
+			each val, index in arr
+				if index < arr.length - 1
+					li
+						a(href="#")= val
+				else
+					li
+						span= val
+
+mixin newsOne(title, date, text)
+	a(href="#").news-one
+		.news-one__inner
+			.news-one__date= date
+			.news-one__title__wrap
+				.news-one__title= title
+			.text-block= text
+
+mixin controlLine(arrayOfObj, wrapClassName, obj_quote)
+	.control-line__wrap
+		if (obj_quote)
+			.control-line__text(class=obj_quote.class_quote ? obj_quote.class_quote: '')=obj_quote.text
+		ul.control-line(class=wrapClassName ? wrapClassName : '')
+			each item, index in arrayOfObj
+				li
+					a(href="#" class=item.className ? item.className:'' target=item.target ? item.target: false).control-link
+						if item.icon
+							svg.icon
+								use(xlink:href="#" + item.icon + "")
+						span.name= item.name
+
+mixin tabLine(arrayOfObj)
+	.tab-line__wrap
+		ul.tab-line(class=wrapClassName ? wrapClassName : '')
+			each item, index in arrayOfObj
+				li
+					a(href="#" class=item.className ? item.className:'' target=item.target ? item.target: false).tab-link
+						if item.icon
+							svg.icon
+								use(xlink:href="#" + item.icon + "")
+						span.name= item.name
+
+mixin labelForm(obj)
+	label.label-form
+		.label-name=obj.label_name ? obj.label_name : 'Lorem'
+			if obj.required
+				span.required-indicator *
+		if obj.clear_control
+			span.clear-control__wrap
+				span.clear-control
+					svg.icon
+						use(xlink:href="#close-icon")
+		if obj.textarea
+			textarea(required=!!obj.required placeholder=obj.placeholder ? obj.placeholder : false class=obj.class_name_input ? obj.class_name_input:'').input-form
+		else
+			input(type=obj.input_type ? obj.input_type : 'text' required=!!obj.required placeholder=obj.placeholder ? obj.placeholder : false data-clear=obj.clear_control ? obj.clear_control: false class=obj.class_name_input ? obj.class_name_input : '').input-form
+		if obj.error_text
+			span.error-text=obj.error_text
+
+mixin customSelect(obj, array)
+	.custom-select(class=obj.class_name ? obj.class_name : '')
+		.custom-select__label=obj.label_name ? obj.label_name : 'Lorem'
+			if obj.required
+				span.required-indicator *
+		.custom-select__main
+			input(type="hidden" val=obj.default_value ? obj.default_value: '').custom-select__input
+			.custom-select__head
+				.custom-select__name= obj.default_value ? obj.default_value: ''
+			.custom-select__body
+				.custom-select__list
+					- for (var i = 0; i < array.length; i++)
+						li(data-option="option-"+i+"" class=(array[i]===obj.default_value) ? 'current': '')
+							span= array[i]
+mixin customCheckbox(obj)
+	.custom-checkbox
+		label.custom-checkbox__label
+			input(type="checkbox" class=obj.input_class ? obj.input_class: '' data-additionally=obj.data_additionally ? obj.data_additionally: false)
+			span.custom-checkbox__icon
+		.custom-checkbox__text !{obj.text}
+
+mixin radioBlock(array, className)
+	.radio-block
+		.radio-list(class=className ? className : '')
+			each item in array
+				label.radio-one
+					input(type="radio" checked=!!item.checked name='radio-1' data-payment-type=item.data_type ? item.data_type: false data-notification=item.data_notification ? item.data_notification: false)
+					.radio-inner
+						.radio-data
+							.radio__title
+								span= item.name
+							.radio__description
+								span= item.text
+
+
+mixin parameterInner(obj)
+	if (obj.icon)
+		.parameter__icon
+			svg.icon
+				use(xlink:href='#' + obj.icon)
+	.parameter__value= obj.value ? obj.value : ''
+
+mixin parameter(obj)
+	- var classLong = obj.long ? 'parameter-long' : ''
+	- var className = '' + classLong + ' ' + (obj.class_name ? obj.class_name : '')
+	if obj.link
+		button.parameter(class=className)
+			+parameterInner(obj)
+	else
+		.parameter(class=className)
+			+parameterInner(obj)
+
+mixin member(name, img, post, location)
+	- var photo = img ? img : 1
+	.member
+		.member__photo(style="background-image: url(images/content/speakers/speaker-"+photo+".jpg)")
+		.member__data
+			.member__name=name ? name: 'Lorem Ipsum'
+			.member__post=post ? post: 'Dolor sit amet'
+			.member__location= location ? location : 'Cons ectetur'
+mixin socialShare()
+	.social-share__wrap
+		+parameter({icon: 'share-icon', link: true, class_name: 'js__show-social-mobile'})
+		.social-share
+			.social-share__dark-bg.close-share-mobile
+			.social-share__main
+				.social-share__head
+					.social-share__title Поделиться
+					a(href="#").social-share__close.close-share-mobile
+						svg.icon
+							use(xlink:href="#close-icon")
+				.social-share__body
+					ul.social-share-list
+						li
+							a(href="#").share-link
+								svg.icon
+									use(xlink:href="#vk-social")
+						li
+							a(href="#").share-link
+								svg.icon
+									use(xlink:href="#tw-social")
+						li
+							a(href="#").share-link
+								svg.icon
+									use(xlink:href="#fb-social")
+						li
+							a(href="#").share-link
+								svg.icon
+									use(xlink:href="#in-social")
+
+
+mixin  mediaFigure(obj)
+	figure.media-figure
+		a(data-fancybox=obj.gallery ? obj.gallery : '', href=obj.link data-type=obj.type ? obj.type: false).media-link
+			if !obj.presentation
+				.media-link__preview
+					.media-link__preview-img(style="background-image:url(images/content/media/"+obj.photo+".jpg)" class=obj.title ? 'blured': '')
+			if obj.title
+				.media-link__details
+					.media-link__watermark
+						img( src="images/logo-watermark.svg" alt="logo")
+					figcaption.media-link__caption
+						.figcaption__inner
+							.figcaption__title=obj.title
+							.figcaption__date 09.01.2017
+							.figcaption__author=obj.author ? obj.author : 'Bessie Fox'
+			if obj.presentation
+				.presentation__details
+					.presentation__top
+						.presentation__logo SQA Days /26
+					.presentation__body
+						.presentation__title=obj.presentation.title ? obj.presentation.title : 'Apche JMeter vs LoadRunner: на заре справедливости, сравнение инструментов нагрузочного тестирования'
+					.presentation__bottom
+						.presentation__author=obj.presentation.author ? obj.presentation.author : 'Константин Константинопольский'
+						.presentation__author-data=obj.presentation.data ? obj.presentation.data : 'Перфоманс Лаб, Ижевск, Россия'

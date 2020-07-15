@@ -1,0 +1,52 @@
+.widget-online {
+  display: block;
+  position: fixed;
+  top: 50%;
+  right: 0;
+  z-index: 100;
+  transform: rotate(-90deg);
+  transform-origin: 100% 100%;
+  background: $color-main;
+  padding: 0;
+  margin: -7.5rem 0 0 0;
+
+  .online__link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-width: 15rem;
+    height: 4rem;
+    background: $color-main;
+    color: $white;
+    font-size: 1.6rem;
+    line-height: 2rem;
+    padding: 0 1rem;
+    transform: translate3d(0,0,0);
+    backface-visibility: hidden;
+
+    @include btnHoverBefore;
+  }
+  @include r($table-screen) {
+    margin-top: -6rem;
+
+    .online__link {
+      min-width: 12rem;
+      height: 3.4rem;
+      font-size: 1.2rem;
+      line-height: 1.4rem;
+      padding: .5rem 1rem;
+    }
+  }
+  @include r($mobile-screen) {
+    margin-top: -4rem;
+
+    .online__link {
+      min-width: 8em;
+      height: 2.8rem;
+      font-size: 1.0rem;
+      line-height: 1rem;
+      padding: 0.7rem 1rem;
+    }
+  }
+}//widget-online

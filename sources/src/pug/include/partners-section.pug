@@ -1,0 +1,10 @@
+section(class=partnersOnMain ? 'section-partners': 'section-default')
+	.container
+		if partnersOnMain
+			.section__title Партнеры конференции
+		else
+			.title-default Партнеры конференции
+	//container
+	include partners-block
+	+controlLine([{name: 'все партнёры'},{name: 'Стать партнёром', className: 'control-link-blue'}], 'control-line__mobile-revers')
+//section-partners

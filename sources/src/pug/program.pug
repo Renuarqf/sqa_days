@@ -1,0 +1,273 @@
+extends base/_layout
+block head
+	title Program
+block page
+
+	section.section-default
+		include include/select-dates
+		.container
+			+breadcrumbs(['Главная', 'Программа'])
+			.title-default Программа
+				| #{' '}
+				a(href="#select-date").title-select.js__show-select-dates SQA Days / 26
+
+			.program-outer
+				.program-outer__text
+					p Cоставьте индивидуальное расписание, отмечая в программе доклады на которые планируете пойти
+				.program-outer__actions
+					ul.download-list
+						li
+							a(href="#").download-link-simple
+								span.name скачать PDf
+								svg.icon
+									use(xlink:href="#download-icon")
+						li
+							a(href="#").download-link-simple
+								span.name скачать DOC
+								svg.icon
+									use(xlink:href="#download-icon")
+		//container
+		.category-slider__wrap
+			mixin slideCategory(name, className)
+				.slide-category(class=className ? className : '')
+					.name= name
+
+			.category-slider
+				+slideCategory('Инструменты', 'state-green')
+				+slideCategory('Архитектура и архитекторы', 'state-light-green')
+				+slideCategory('Процессы', 'state-orange')
+				+slideCategory('Архитектура и архитекторы', 'state-pink')
+				+slideCategory('Специализированные навыки', 'state-blue')
+				+slideCategory('Карьера аналитика', 'state-red')
+				+slideCategory('Требования', 'state-purple')
+				+slideCategory('Проектирование взаимодействий', 'state-light-blue')
+				+slideCategory('Обучение')
+				+slideCategory('Расписание')
+				+slideCategory('Информация')
+				+slideCategory('Пресса')
+				+slideCategory('Мастер-класс')
+
+		mixin esTip(lvl)
+			.es__tip
+				ul.tip__list
+					li
+						.tip(class=lvl === 'easy' ? 'current': '')
+							.tip__title
+								svg.icon
+									use(xlink:href="#lvl-easy")
+								.name Простой уровень
+							.tip__text
+								p Подойдет новичкам или специалистам из смежных сфер деятельности
+					li
+						.tip(class=lvl === 'medium' ? 'current': '')
+							.tip__title
+								svg.icon
+									use(xlink:href="#lvl-medium")
+								.name Средний уровень
+							.tip__text
+								p Подойдет среднячкам или крепких джунам для закрепления материала
+					li
+						.tip(class=lvl === 'hard' ? 'current': '')
+							.tip__title
+								svg.icon
+									use(xlink:href="#lvl-hard")
+								.name Сложный уровень
+							.tip__text
+								p Не лезь в это, если ты в этом не шаришь. Хардовые вещи тут рассказывают
+		mixin eventSingle(obj)
+			.event-single(class=obj.statusLocked ? 'locked': '' class=obj.statusInactive ? 'inactive': '')
+				if (obj.empty)
+					.es__empty
+						each item in obj.empty
+							p= item
+				else
+					.es__category(class=obj.categoryStateClass ? obj.categoryStateClass: '')=obj.category
+					.es__info
+						.es__main
+							.es__title= obj.title
+							.es__author= obj.author
+							.es__company= obj.company
+							if obj.location
+								.es__location= obj.location
+						.es__aside
+							ul.es__params-list
+								li
+									.es__param
+										.name.uppercase= obj.lang
+								li
+									.es__param
+										.name=obj.duration ? obj.duration : '90 мин'
+								li
+									.es__param.es__param-with-tip
+										svg.icon
+											use(xlink:href="#lvl-"+obj.lvl+"")
+										case obj.lvl
+											when 'hard'
+												.name Сложный
+											when 'medium'
+												.name Средний
+											default
+												.name Простой
+										+esTip(obj.lvl)
+								li
+									.es__param
+										.name= obj.type ? obj.type : 'Мастер-класс'
+					.es__bottom
+						.es__buttons
+							if (obj.statusLocked)
+								.btn-locked
+									span= obj.btnName ? obj.btnName: 'Место Забронировано'
+							else
+								a(href="#").btn.btn-default.btn-default-event
+									span= obj.btnName ? obj.btnName: 'я пойду'
+						ul.es__actions
+							li
+								// a(href) can be replaced to div
+								a(href="#").es__action
+									.es__action-icon
+										svg.icon
+											use(xlink:href="#like-icon")
+									.es__action-name 69
+							li
+								a(href="#").es__action
+									.es__action-icon
+										svg.icon
+											use(xlink:href="#comment-icon")
+									.es__action-name 2
+		.container.container-wide-lg
+			.t_table(data-filter="f1" data-id="table-1")
+				.t_head
+					.t_row
+						.t_col.t_col-time
+							.text-head
+								// arrow direction top className = sort-link-up
+								a(href="#table-2").sort-link.sort-link-down.js__go-to-next-table День 1
+						.t_col(data-filter="f1")
+							.text-head
+								span.full-title Секция A (300 чел.)
+								a(href="#f1").table-toggle-link A
+						.t_col(data-filter="f2")
+							.text-head
+								span.full-title Секция B (300 чел.)
+								a(href="#f2").table-toggle-link B
+						.t_col(data-filter="f3")
+							.text-head
+								span.full-title Секция C (300 чел.)
+								a(href="#f3").table-toggle-link C
+				.t_body
+					.t_row
+						.t_col.t_col-time
+							.time 08:30
+						.t_col
+							.text Регистрация, утренний чай/кофе
+					.t_row
+						.t_col.t_col-time
+							.time 09:15
+						.t_col
+							.text Открытие конференции
+					.t_row
+						.t_col.t_col-time
+							.time.time-lg 10:00
+							.time.time-middle  10:20
+							.time.time-lg 10:40
+						.t_col(data-filter="f1")
+							- var data = {title:'Тестовые стратегии, аналитическое тестирование и другие вопросы (part #1)', category: 'Специализированные навыки', categoryStateClass: 'state-light-blue', author: 'Erik van Veenendaal', company: 'Improve IT Services BV', lang: 'en', lvl:'easy'}
+							+eventSingle(data)
+						.t_col(data-filter="f2")
+							- var data = {title:'Эмоциональное выгорание', category: 'Архитектура и архитекторы', categoryStateClass: 'state-light-green', author: 'Диана Гудень', company: 'Helmes', location: 'Минск, Беларусь', lang: 'ru', lvl:'medium', duration: '40 мин'}
+							+eventSingle(data)
+						.t_col(data-filter="f3")
+							- var data = {title:'Как заставить ручных тестировщиков писать автотесты', category: 'Архитектура и архитекторы', categoryStateClass: 'state-orange', author: 'Екатерина Родина', company: 'АСКОН', location: 'Коломна, Россия', lang: 'ru', lvl:'medium'}
+							+eventSingle(data)
+
+							- var data = {statusLocked: true, title:'STAR/AR на собеседовании. Do’s and Dont’s', category: 'Специализированные навыки', categoryStateClass: 'state-red', author: 'Сергей Атрощенков', company: 'EPAM', lang: 'en', lvl:'hard', btnName: 'Я иду сюда'}
+							+eventSingle(data)
+					.t_row
+						.t_col.t_col-time
+							.time 10:40
+						.t_col
+							.text
+								| Перерыв. Общение. Нетворкинг с кипишологом
+								| #{' '}
+								strong.grey (15мин)
+					.t_row
+						.t_col.t_col-time
+							.time.time-lg 10:55
+							.time.time-lg 11:35
+						.t_col(data-filter="f1")
+							- var data = {statusInactive: true, title:'Нам нужно больше менеджеров!..', category: 'Специализированные навыки', author: 'Аскар Аюпов', company: 'Райффайзенбанк', location: 'Омск, Россия', lang: 'en', lvl:'medium', type: 'Секционный доклад', btnName: 'Забронировать (2 из 25 мест)'}
+							+eventSingle(data)
+						.t_col(data-filter="f2")
+							- var data = {statusLocked: true ,title:'Как поддерживать мотивацию на всех этапах карьеры - рассказ тестировщика', category: 'Специализированные навыки', categoryStateClass: 'state-light-blue', author: 'Petra Bouskova', company: 'tesena s.r.o.', location: 'Гродно, Беларусь', lang: 'EN', lvl:'easy', type: 'Секционный доклад', btnName: 'место Забронировано'}
+							+eventSingle(data)
+						.t_col(data-filter="f3")
+							- var data = {empty: ['Обеденный перерыв. 1 смена. ','Нетворкинг с кипишологом в секции С']}
+							+eventSingle(data)
+				//t_body
+			//t_table
+			.container
+				.program-outer
+					.program-outer__actions
+						ul.download-list
+							li
+								a(href="#").download-link-simple
+									span.name скачать PDf
+									svg.icon
+										use(xlink:href="#download-icon")
+							li
+								a(href="#").download-link-simple
+									span.name скачать DOC
+									svg.icon
+										use(xlink:href="#download-icon")
+			.t_table(data-filter="f1" data-id="table-2")
+				.t_head
+					.t_row
+						.t_col.t_col-time
+							.text-head
+								a(href="#table-1").sort-link.sort-link-up.js__go-to-next-table День 2
+						.t_col(data-filter="f1")
+							.text-head
+								span.full-title Секция A (300 чел.)
+								a(href="#f1").table-toggle-link A
+						.t_col(data-filter="f2")
+							.text-head
+								span.full-title Секция B (300 чел.)
+								a(href="#f2").table-toggle-link B
+						.t_col(data-filter="f3")
+							.text-head
+								span.full-title Секция C (300 чел.)
+								a(href="#f3").table-toggle-link C
+				.t_body
+					.t_row
+						.t_col.t_col-time
+							.time 08:30
+						.t_col
+							.text Регистрация, утренний чай/кофе
+					.t_row
+						.t_col.t_col-time
+							.time 09:15
+						.t_col
+							.text Открытие конференции
+					.t_row
+						.t_col.t_col-time
+							.time.time-lg 10:00
+							.time.time-middle  10:20
+							.time.time-lg 10:40
+						.t_col(data-filter="f1")
+							- var data = {title:'Тестовые стратегии, аналитическое тестирование и другие вопросы (part #1)', category: 'Специализированные навыки', categoryStateClass: 'state-light-blue', author: 'Erik van Veenendaal', company: 'Improve IT Services BV', lang: 'en', lvl:'easy'}
+							+eventSingle(data)
+						.t_col(data-filter="f2")
+							- var data = {title:'Эмоциональное выгорание', category: 'Архитектура и архитекторы', categoryStateClass: 'state-light-green', author: 'Диана Гудень', company: 'Helmes', location: 'Минск, Беларусь', lang: 'ru', lvl:'medium', duration: '40 мин'}
+							+eventSingle(data)
+						.t_col(data-filter="f3")
+							- var data = {title:'Как заставить ручных тестировщиков писать автотесты', category: 'Архитектура и архитекторы', categoryStateClass: 'state-orange', author: 'Екатерина Родина', company: 'АСКОН', location: 'Коломна, Россия', lang: 'ru', lvl:'medium'}
+							+eventSingle(data)
+
+							- var data = {statusLocked: true, title:'STAR/AR на собеседовании. Do’s and Dont’s', category: 'Специализированные навыки', categoryStateClass: 'state-red', author: 'Сергей Атрощенков', company: 'EPAM', lang: 'en', lvl:'hard', btnName: 'Я иду сюда'}
+							+eventSingle(data)
+				//t_body
+		//container
+	//section-default
+
+
+	include include/partners-section

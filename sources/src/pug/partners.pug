@@ -1,0 +1,20 @@
+extends base/_layout
+block head
+	title Partners
+block page
+
+	section.section-default.section-default-full-height
+		.container
+			+breadcrumbs(['Главная', 'Партнёры'])
+			.title-default Партнёры
+				| #{' '}
+				a(href="#select-date").title-select.js__show-select-dates SQA Days / 26
+			include include/select-dates
+
+		//container
+		- var showAllPartners = true
+		include include/partners-block
+		+controlLine([{name: 'Стать партнером', className: 'control-link-blue'}])
+	//section-default
+
+

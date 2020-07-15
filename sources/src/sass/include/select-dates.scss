@@ -1,0 +1,217 @@
+.select-dates__block {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 550;
+  visibility: hidden;
+  opacity: 0;
+  transition: all $fast-anim ease;
+
+  &.filled {
+    background: $white;
+  }
+
+  &.show {
+    visibility: visible;
+    opacity: 1;
+
+    .slider-dates,
+    .select-dates__bottom {
+      transform: translate(0, 0);
+    }
+    .blue-quad {
+      height: 30rem;
+    }
+  }
+  .select-dates__bottom {
+    transition: all $fast-anim ease;
+    transform: translate(0, 100%);
+  }
+  .slider-dates {
+    transition: all $fast-anim ease;
+    transform: translate(-100%, 0);
+  }
+  .blue-quad {
+    height: 0;
+    transition: height $fast-anim ease;
+  }
+
+  .select-dates__block__bg {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background:  $white;
+  }
+  .select-date-sizer {
+    display: block;
+    width: 100%;
+    height: 10rem;
+  }
+  .select-dates__main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+  }
+  .select-dates__block-inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 0;
+    height: 100%;
+  }
+  .select-dates__top {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10rem;
+  }
+  .hidden-select-close {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+  }
+  .select-dates__bottom {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+  }
+  .slider-dates__wrap {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+  }
+  .blue-quad {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30rem;
+    background: $color-main;
+  }
+  .slider-dates {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    margin: auto;
+    background: none;
+  }
+  .slick-list {
+    //overflow: visible;
+  }
+  .active-date {
+    .select-date {
+      color: $text-color;
+      opacity: 1;
+    }
+  }
+  .slick-current {
+
+    .select-date {
+      color: $white;
+      opacity: 1;
+      cursor: default;
+    }
+  }
+
+  .select-date {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 30rem;
+    height: 30rem;
+    font-size: 14rem;
+    line-height: 14rem;
+    font-weight: 600;
+    color: $text-color;
+    opacity: .2;
+    transition: color $fast-anim ease, opacity $fast-anim ease;
+    cursor: pointer;
+  }
+  .slick-dots {
+    display: none;
+    position: absolute;
+    top: 100%;
+  }
+
+  @include r($desktop-xs) {
+
+    &.show {
+      .blue-quad {
+        height: 18rem;
+      }
+    }
+    .blue-quad {
+      width: 18rem;
+      background: $color-main;
+    }
+    .select-date {
+      width: 18rem;
+      height: 18rem;
+      font-size: 10rem;
+      line-height: 10rem;
+    }
+  }//$desktop-xs
+  @include r($table-screen) {
+
+    &.show {
+      .blue-quad {
+        height: 16rem;
+      }
+    }
+    .blue-quad {
+      width: 16rem;
+      background: $color-main;
+    }
+    .select-date {
+      width: 16rem;
+      height: 16rem;
+      font-size: 8rem;
+      line-height: 8rem;
+    }
+  }//$table-screen
+  @include r($mobile-screen) {
+
+    &.show {
+      .blue-quad {
+        height: 13rem;
+      }
+    }
+    .blue-quad {
+      width: 13rem;
+      background: $color-main;
+    }
+    .select-date {
+      width: 13rem;
+      height: 13rem;
+      font-size: 6.4rem;
+      line-height: 6.4rem;
+    }
+  }//$mobile-screen
+}//select-dates__block

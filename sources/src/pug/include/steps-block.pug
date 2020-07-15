@@ -1,0 +1,20 @@
+.steps-block
+	- var stepsData = ['Мои данные', 'Участники (1)', 'Детали оплаты', 'Оплата']
+	if (!currentStep)
+		- var currentStep = 1
+	ul.steps-list
+		- var doneClass= 'done'
+		- var currentClass= 'current'
+		- for (var i = 1; i <= stepsData.length; i++)
+			- var itemClass = ''
+			if (i < currentStep)
+				- itemClass = doneClass
+			if (i === currentStep)
+				- itemClass = currentClass
+			li
+				.step-one(class=itemClass)
+					span.number= i +'/'
+					span.name= stepsData[i-1]
+
+	//steps-list
+//steps-block

@@ -1,0 +1,79 @@
+extends base/_layout
+block head
+	title Step 1
+	- var disableTicketBtn = true
+block page
+
+	section.section-default
+		.container
+			+breadcrumbs(['Главная', 'Билеты', 'Регистрация'])
+			.title-default Регистрация участников
+				| #{' '}
+				span.nowrap SQA Days
+					| #{' '}
+					span.blue /
+					| 26
+		- var currentStep = 1
+		include include/steps-block
+		.container
+			.form-container
+				form.form
+					.form-line
+						+labelForm({label_name: 'Логин', required: true})
+					.form-line
+						+labelForm({label_name: 'Пароль', input_type: 'password', required: true})
+					.form-line
+						+labelForm({label_name: 'Повторите пароль', input_type: 'password', required: true})
+		.block-default
+			.container
+				.subtitle-default Вы участвуете как
+			+radioBlock([{name:'Участник конференции', text:'Регистрируйте себя и других участников', checked: true}, {name:'Регистратор участников', text:'Вы не учавствуете но регистрируете других участников'}, {name:'Докладчик конференции', text:'Регистрируете только себя. Участие бесплатно, если доклад принят. '}])
+		//block-default
+		.block-default
+			.container
+				.subtitle-default Немного ваших личных данных
+				.form
+					.f__row
+						.f__col
+							+labelForm({label_name: 'Фамилия', required: true})
+						.f__col
+							+labelForm({label_name: 'Имя', required: true})
+						.f__col
+							+labelForm({label_name: 'Отчество', required: true})
+					.f__row
+						.f__col
+							+labelForm({label_name: 'Email', required: true, input_type: 'email'})
+						.f__col
+							+labelForm({label_name: 'Номер телефона', required: true, input_type: 'tel'})
+					.f__row
+						.f__col
+							+customSelect({label_name: 'Страна', required: true},['Беларусь', 'Россия', 'Польша', 'Литва'])
+						.f__col
+							+customSelect({label_name: 'Город', required: true},['Минск', 'Брест', 'Витебск', 'Гомель', 'Гродно', 'Могилев'])
+		//block-default
+		.block-default
+			.container
+				.subtitle-default И немного данных о вашей организации
+				.form
+					.f__row
+						.f__col
+							+labelForm({label_name: 'Название компании', required: true})
+						.f__col
+							+labelForm({label_name: 'Должность', required: true})
+						.f__col
+							+labelForm({label_name: 'Название компнаии в бейджике', required: true})
+					.f__row
+						.f__col
+							+labelForm({label_name: 'Сайт компании', required: true})
+						.f__col
+							+customSelect({label_name: 'Тип компании', required: true},['Коммерческая', 'Продуктовая', 'Образовательная', 'Не коммерческая'])
+						.f__col
+							+customSelect({label_name: 'Количество сотрудников', required: true},['>10', '>30', '>69', '>100'])
+					.form-line
+						+customCheckbox({text: 'Показывать меня в списке участников'})
+					.form-line
+						+customCheckbox({text: 'Я прочитал <a href="#">пользовательское соглашение</a> и согласен с ним'})
+		//block-default
+		.space-separator
+		+controlLine([{name: 'Далее', className: 'control-link-blue'}])
+	//section-default

@@ -1,0 +1,25 @@
+extends base/_layout
+block head
+	title Recover Password
+block page
+
+	section.section-default
+		.container
+			+breadcrumbs(['Главная', 'Восстановление пароля'])
+			.title-default Восстановление пароля
+		.container
+			.form-container
+				form.form
+					.form-line
+						+labelForm({label_name: 'Email', input_type: 'email'})
+					.form-bottom
+						button(type="submit").btn.btn-default
+							span отправить пароль
+				.form-container-message
+					| Я вспомнил пароль!
+					| #{' '}
+					a(href="#") Войти
+		//container
+		+controlLine([{name: 'Вконтакте', className: 'vk', icon: 'vk-social', target: "_blank"}, {name: 'Facebook', className: 'fb', icon: 'fb-social', target: "_blank"}],'control-line-mobile-nowrap',{text: 'Или используйте соцсети', class_quote: 'dark'})
+	//section-default
+	include include/cookie-block

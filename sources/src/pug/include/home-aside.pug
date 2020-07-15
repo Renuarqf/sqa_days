@@ -1,0 +1,27 @@
+.home-aside(data-aside="place")
+	.home-aside__inner
+		.home-aside__bg(style="background-image:url(images/content/bg/bg-2.jpg)")
+		a(href="#close-aside").close-aside.js__interactive
+			svg.icon
+				use(xlink:href="#close-icon")
+		.home-aside__content
+			.home-aside__data
+				.home-aside__title Отель "Мариотт"
+				.home-aside__info
+					p Беларусь, Минск, проспект Победителей 20
+		+controlLine([{name: 'показать на карте', target: '_blank', className: 'control-link-white'}])
+.home-aside(data-aside="visa")
+	.home-aside__inner
+		.home-aside__bg()
+		a(href="#close-aside").close-aside.js__interactive
+			svg.icon
+				use(xlink:href="#close-icon")
+		.home-aside__content
+			.home-aside__data
+				.home-aside__title Визовые вопросы
+				.home-aside__info
+					p
+						a(href="#") Список стран, для которых установлен или отсутствует визовый режим с Россией
+				.home-aside__text
+					p Мы рекомендуем оформлять визы с запасом по времени.
+

@@ -1,0 +1,30 @@
+.select-dates__block
+	.select-dates__block-inner
+		.select-dates__block__bg
+		.select-dates__top.select-date-sizer
+			a(href="#hide-select").hidden-select-close.js__hide-select-dates
+		mixin slideSingleDate(value, index, current)
+			.slide-single-date(class=current ? 'active-date':'' data-index=index)
+				.select-date
+					.date-value= value
+		.select-dates__main
+
+			.select-date-sizer
+			.slider-dates__wrap
+				.blue-quad
+				.slider-dates
+					+slideSingleDate('19', '0')
+					+slideSingleDate('20', '1')
+					+slideSingleDate('21', '2')
+					+slideSingleDate('22', '3')
+					+slideSingleDate('23', '4')
+					+slideSingleDate('24', '5')
+					+slideSingleDate('25', '6')
+					+slideSingleDate('26', '7', true)
+			.select-date-sizer
+		.select-dates__bottom
+			.sd__form
+				input(type="hidden").hidden-input-select
+				button(type="button").btn.btn-default.js__hide-select-dates
+					span выбрать конференццию
+//select-dates__block

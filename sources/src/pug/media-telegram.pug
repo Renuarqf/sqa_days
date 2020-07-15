@@ -1,0 +1,69 @@
+extends base/_layout
+block head
+	title Media
+block page
+
+
+	section.section-default
+		include include/select-dates
+		.container
+			+breadcrumbs(['Главная', 'Медиа'])
+			.title-default Медиа
+				| #{' '}
+				a(href="#select-date").title-select.js__show-select-dates SQA Days / 26
+
+		//container
+		+tabLine([
+			{name: 'Видео'},
+			{name: 'Презентации'},
+			{name: 'Фото'},
+			{name: 'Telegram', className: 'active'},
+		])
+		.media-main-block
+			.tg-block
+				.tg__aside
+					.tga__main
+						.tga__main-logo
+							img( src="images/content/media/tg-logo.png" alt="logo-tg")
+						.tga__main-inner
+							.tga__main-title SQA Days
+							a(href="tg:t.me/sqadays").tga__main-link t.me/sqadays
+					ul.tga__list
+						li
+							.tga__info
+								.tga__info-value 784
+								.tga__info-name участника
+						li
+							.tga__info
+								.tga__info-value 337
+								.tga__info-name фото
+						li
+							.tga__info
+								.tga__info-value 219
+								.tga__info-name ссылок
+				.tg__body
+					.iframe__wrap
+						iframe(style="background-image: url(images/content/media/tg-chat.jpg").iframe-preview.blured
+						iframe(class="iframe" src="iframe-telegram.html").blured
+					figure.tgb-overlay.media-figure
+						.tgb-btn__wrap
+							a(href="iframe-telegram.html" data-fancybox data-type="iframe").btn.btn-default.btn-dark-grey
+								span посмотреть историю сообщений
+						figcaption
+							.media-control__wrap
+								a(href="#" target="_blank").media-control
+									span.name Подписаться
+									svg.icon
+										use(xlink:href="#tg-icon")
+
+
+			.media-control__wrap
+				a(href="#" target="_blank").media-control
+					span.name Подписаться
+					svg.icon
+						use(xlink:href="#tg-icon")
+
+	//section-default
+
+
+	include include/partners-section

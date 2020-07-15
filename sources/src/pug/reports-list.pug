@@ -1,0 +1,121 @@
+extends base/_layout
+block head
+	title Reports
+block page
+
+	section.section-default
+		include include/select-dates
+		.container
+			+breadcrumbs(['Главная', 'Доклады'])
+			.title-default Список докладов
+				| #{' '}
+				a(href="#select-date").title-select.js__show-select-dates SQA Days / 26
+
+			include include/search-bar
+
+			.report-filter__wrap
+				.report-filter__toggle__wrap
+					a(href="#").report-filter__toggle
+						span.name Параметры отображения
+						svg.icon
+							use(xlink:href="#filter-icon")
+				.report-filter
+					.report-filter__dark-bg.js__close-report-filter
+					.report-filter__main
+						.report-filter__head
+							.report-filter__title Параметры отображения
+							a(href="#").report-filter__close.js__close-report-filter
+								svg.icon
+									use(xlink:href="#close-icon")
+						.report-filter__body
+							.report-filter__list
+								.report-filter__one
+									+customSelect({label_name: 'Статус докладов', default_value: 'Принятые доклады', class_name:'custom-select-filter'},['Принятые доклады', 'Доклады на рассмотрении'])
+								.report-filter__one
+									+customSelect({label_name: 'Сортировать по', default_value: 'Авторы по алфавиту', class_name:'custom-select-filter'},['Авторы по алфавиту', 'Авторы по возрастанию'])
+							.report-filter__controls
+								button.btn.btn-default
+									span применить
+
+
+
+			ul.report-list.report-list-margin-bottom
+				li
+					.report
+						.report__inner
+							ul.report__authors
+								li
+									+member('Bernard Russell', '1', 'General Electric', 'Congo')
+							a(href="#").report__title 500 злобных карт тестировщика или изучение тестирования в игровой
+							.report__bottom
+								ul.report__info
+									li
+										+parameter({icon: 'lvl-hard', value: 'Сложный'})
+									li
+										+parameter({value: '40 мин'})
+								ul.report__controls
+									li
+										+parameter({icon: 'like-icon', value: '1', link: true})
+									li
+										+parameter({icon: 'comment-icon', value: '1', link: true})
+									li
+										+parameter({value: 'Поделиться', link: true, long: true, class_name: 'js__show-social mobile-hide'})
+										+socialShare()
+
+					//report
+				//li
+				li
+					.report
+						.report__inner
+							ul.report__authors
+								li
+									+member('Jorge Simmmons', '2', 'Gillette', 'Albania')
+								li
+									+member('Nathan Howard', '3', 'eBay', 'Timor-Leste')
+							a(href="#").report__title Автоматизация визуального тестирования для кодеров и не-кодеров. Ускорение деплоймента качественного функционала
+							.report__bottom
+								ul.report__info
+									li
+										+parameter({icon: 'lvl-medium', value: 'Средний'})
+									li
+										+parameter({value: '90 мин'})
+								ul.report__controls
+									li
+										+parameter({icon: 'like-icon', value: '1', link: true})
+									li
+										+parameter({icon: 'comment-icon', value: '1', link: true})
+									li
+										+parameter({value: 'Поделиться', link: true, long: true, class_name: 'js__show-social mobile-hide'})
+										+socialShare()
+					//report
+				//li
+				li
+					.report
+						.report__inner
+							ul.report__authors
+								li
+									+member('Darrell Pena', '4', 'Starbucks', 'Pakistan')
+							a(href="#").report__title Codeless-инструменты для автоматизации тестирования: в поисках лучшего решения
+							.report__bottom
+								ul.report__info
+									li
+										+parameter({icon: 'lvl-easy', value: 'Простой'})
+									li
+										+parameter({value: '40 мин'})
+								ul.report__controls
+									li
+										+parameter({icon: 'like-icon', value: '1', link: true})
+									li
+										+parameter({icon: 'comment-icon', value: '1', link: true})
+									li
+										+parameter({value: 'Поделиться', link: true, long: true, class_name: 'js__show-social mobile-hide'})
+										+socialShare()
+					//report
+				//li
+
+			//report-list
+		include include/pagination
+	//section-default
+
+
+	include include/partners-section

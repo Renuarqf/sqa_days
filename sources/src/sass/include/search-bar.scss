@@ -1,0 +1,91 @@
+.search-bar__wrap {
+  display: block;
+  width: 100%;
+  margin: 3.2rem 0 4.8rem;
+
+  @include r($desktop-xs) {
+    margin-bottom: 3.2rem;
+    margin-top: 2.4rem;
+  }
+  @include r($table-screen) {
+    margin-bottom: 2.4rem;
+  }
+  @include r($mobile-screen) {
+    margin-bottom: 2.4rem;
+  }
+}
+
+.search-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: stretch;
+  position: relative;
+  width: 100%;
+
+
+  .search-bar__label {
+    display: block;
+    width: 100%;
+  }
+  .search-bar__input {
+    display: block;
+    width: 100%;
+    height: 10rem;
+    padding: 2.4rem 3.8rem;
+    font-family: $ff-ibmPlexSans;
+    font-weight: 500;
+    font-size: 2.4rem;
+    line-height: 2.4rem;
+    color: $text-color;
+    border: 1px solid $grey;
+  }
+  .search-bar__btn {
+    display: block;
+    width: 10rem;
+    height: 10rem;
+    min-width: 10rem;
+    background: $color-main;
+    border: none;
+    padding: 2.6rem;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+
+    @include btnHoverBefore;
+
+    .icon {
+      position: relative;
+      fill: $white;
+    }
+  }
+  @include r($table-screen) {
+    .search-bar__input {
+      height: 8.8rem;
+      padding: 2.4rem 3.2rem;
+      font-size: 2.4rem;
+      line-height: 2.4rem;
+      border: 1px solid $grey;
+    }
+    .search-bar__btn {
+      width: 8.8rem;
+      height: 8.8rem;
+      min-width: 8.8rem;
+    }
+  }//$table-screen
+  @include r($mobile-screen) {
+    .search-bar__input {
+      height: 4.8rem;
+      padding: 1.6rem;
+      font-size: 1.6rem;
+      line-height: 1.6rem;
+      border: 1px solid $grey;
+    }
+    .search-bar__btn {
+      width: 4.8rem;
+      height: 4.8rem;
+      min-width: 4.8rem;
+      padding: 1.2rem;
+    }
+  }//$mobile-screen
+}//search-bar

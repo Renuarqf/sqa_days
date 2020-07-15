@@ -1,0 +1,116 @@
+.pagination-block {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+
+  .pugination {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 0;
+    margin: 0;
+    //width: 100%;
+    flex-grow: 15;
+    cursor: default;
+
+    & > li {
+      display: block;
+      width: 100%;
+      list-style: none;
+    }
+  }
+  .pagination-nav {
+    display: block;
+    //width: 100%;
+    flex-grow: 5;
+    flex-basis: 5rem;
+    text-align: center;
+  }
+  .pugination span,
+  .pugination a,
+  .pagination-nav {
+    display: block;
+    font-size: 2.4rem;
+    line-height: 2.8rem;
+    height: 8.8rem;
+    color: $grey;
+    padding: 3rem 1rem;
+    text-align: center;
+    @include shadowBorder();
+    position: relative;
+    transition: color $fast-anim ease, background-color $fast-anim ease;
+
+    &.active {
+      background: $light-bg;
+      font-weight: bold;
+      color: $text-color;
+      cursor: default;
+
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 1px;
+        background: $border-grey;
+      }
+    }
+  }
+  .pugination a,
+  .pagination-nav {
+    .desktop &:not(.active):hover {
+      color: $white;
+      background: $color-main;
+      font-weight: 500;
+    }
+  }
+  @include r($desktop-xs) {
+    .pugination span,
+    .pugination a,
+    .pagination-nav {
+      height: 8rem;
+      padding-top: 2.6rem;
+      padding-bottom: 2.6rem;
+    }
+  }//$desktop-xs
+  @include r($table-screen) {
+    flex-wrap: wrap;
+    width: calc(100% + 1px);
+    margin-left: -1px;
+
+    .pugination span,
+    .pugination a,
+    .pagination-nav {
+    }
+
+    .pugination {
+      width: 100%;
+      order: 1;
+    }
+    .pagination-nav {
+      width: 50%;
+    }
+    .prev {
+      order: 2;
+    }
+    .next {
+      order: 3;
+    }
+  }//$table-screen
+  @include r($mobile-screen) {
+    .pugination span,
+    .pugination a,
+    .pagination-nav {
+      font-size: 1.6rem;
+      line-height: 2rem;
+      height: 4.8rem;
+      padding: 1.4rem .5rem;
+    }
+    .pagination-nav {
+    }
+  }//$mobile-screen
+}//pagination-block

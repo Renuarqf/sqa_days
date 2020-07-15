@@ -1,0 +1,538 @@
+.tickets-price-line {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: stretch;
+
+  .tickets-price__one {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 0 1px 0 $border-grey, 1px 0 0 $border-grey, inset 0 1px 0 $border-grey;
+    margin-top: 6.0rem;
+    color: $grey;
+    text-align: center;
+    height: 1px;
+    min-height: 18.6rem;
+
+    &:after {
+      content: '';
+      display: none;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 1px;
+      background: $white;
+      opacity: .2;
+    }
+    &:last-child {
+      &:after {
+        display: none;
+      }
+    }
+
+    &.current {
+      background: $text-color;
+      color: $white;
+      min-width: 57rem;
+      height: auto;
+      padding: 2.4rem;
+      box-shadow: 0 1px 0 $text-color, 1px 0 0 $text-color, inset 0 1px 0 $text-color;
+      margin-top: 0;
+      text-align: left;
+    }
+  }//tickets-price__one
+  .current ~ .tickets-price__one {
+    background: $text-color;
+    color: $white;
+    box-shadow: 0 1px 0 $text-color, 1px 0 0 $text-color, inset 0 1px 0 $text-color;
+
+    &:after {
+      display: block;
+    }
+  }
+  .current {
+    .tp__value {
+      font-size: 8rem;
+      line-height: 8rem;
+      margin: 0 0 1.2rem;
+    }
+    .tp__deadline {
+      font-weight: bold;
+      font-size: 3.2rem;
+      line-height: 3.2rem;
+      letter-spacing: -0.05em;
+    }
+    .tp__price {
+      padding-top: 1.6rem;
+    }
+  }
+  .tp__inner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .tp__price {
+    display: block;
+    width: 100%;
+    padding-top: 1.2rem;
+  }
+  .tp__value {
+    display: block;
+    width: 100%;
+    font-size: 4.8rem;
+    line-height: 4.8rem;
+    font-weight: bold;
+    margin: 0 0 .4rem;
+    letter-spacing: -0.05em;
+  }
+  .tp__currency {
+    display: block;
+    width: 100%;
+    font-size: 2rem;
+    line-height: 2rem;
+    letter-spacing: -0.05em;
+    opacity: .5;
+    text-transform: uppercase;
+  }
+  .tp__deadline {
+    display: block;
+    width: 100%;
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+    margin-top: auto;
+  }
+  .tp__tab {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: -2.4rem -2.4rem 0;
+    padding: 0;
+    width: calc(100% + 4.8rem);
+
+    li {
+      display: block;
+      list-style: none;
+      width: 100%;
+    }
+    a {
+      display: block;
+      width: 100%;
+      font-size: 1.6rem;
+      line-height: 2rem;
+      font-weight: bold;
+      position: relative;
+      height: 6.4rem;
+      padding: 2.2rem 1rem;
+      text-align: center;
+      background: $white;
+      color: $text-color;
+      transition: color $fast-anim ease, background-color $fast-anim ease;
+
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: none;
+        border: .5rem solid $text-color;
+      }
+      &.active {
+        background: $text-color;
+        color: $white;
+        cursor: default;
+      }
+    }
+  }//tp__tab
+  .tp__currency-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 0 1.2rem;
+    margin: 0 0 2.4rem;
+    width: 100%;
+    position: relative;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: $white;
+      opacity: .2;
+    }
+
+    li {
+      display: block;
+      list-style: none;
+      padding-right: 1.2rem;
+      margin: 0 0 1.2rem;
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+    a {
+      display: inline-block;
+      font-size: 2.4rem;
+      line-height: 2.4rem;
+      color: $white;
+      opacity: .6;
+      font-weight: bold;
+      text-transform: uppercase;
+
+      &.active {
+        opacity: 1;
+        cursor: default;
+      }
+    }
+  }//tp__currency-list
+  .tp__button {
+    display: block;
+    width: 100%;
+    padding-top: 2.4rem;
+  }
+  @include r($desktop-xs) {
+    .tickets-price__one {
+      padding: 1.6rem 1rem;
+      margin-top: 5.4rem;
+      min-height: 15.4rem;
+
+
+      &.current {
+        min-width: 38rem;
+        padding: 1.6rem;
+        margin-top: 0;
+      }
+    }//tickets-price__one
+    .current ~ .tickets-price__one {
+
+    }
+    .current {
+      .tp__value {
+        font-size: 6.4rem;
+        line-height: 6.4rem;
+        margin: 0 0 1.6rem;
+      }
+      .tp__deadline {
+        font-size: 2.4rem;
+        line-height: 2.4rem;
+        letter-spacing: -0.05em;
+      }
+      .tp__price {
+        padding-top: 1.2rem;
+      }
+    }
+    .tp__inner {
+
+    }
+    .tp__price {
+      padding-top: .8rem;
+    }
+    .tp__value {
+      font-size: 3.2rem;
+      line-height: 3.2rem;
+      margin: 0 0 1.2rem;
+      letter-spacing: -0.05em;
+    }
+    .tp__currency {
+      font-size: 1.6rem;
+      line-height: 2rem;
+      letter-spacing: -0.05em;
+    }
+    .tp__deadline {
+      font-size: 1.6rem;
+      line-height: 2.0rem;
+    }
+    .tp__tab {
+      margin: -1.6rem -1.6rem 0;
+      padding: 0;
+      width: calc(100% + 3.2rem);
+
+      li {
+        width: 100%;
+      }
+      a {
+        width: 100%;
+        font-size: 1.4rem;
+        line-height: 2rem;
+        height: 5.4rem;
+        padding: 1.7rem 1rem;
+
+        &:before {
+          border-width: .5rem;
+        }
+      }
+    }//tp__tab
+    .tp__currency-list {
+      padding: 0 0 .6rem;
+      margin: 0 0 1.6rem;
+      width: 100%;
+
+      li {
+        padding-right: 1.6rem;
+        margin: 0 0 1rem;
+
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+      a {
+        font-size: 2.0rem;
+        line-height: 2.0rem;
+      }
+    }//tp__currency-list
+    .tp__button {
+      padding-top: 2.4rem;
+    }
+    .btn-default {
+      min-height: 10rem;
+    }
+  }//$desktop-xs
+  @include r($table-screen) {
+    flex-wrap: wrap;
+    .tickets-price__one {
+      width: 100%;
+      padding: 2rem;
+      margin-top: 0;
+      min-height: 10rem;
+      box-shadow: none;
+
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 1px;
+        background: $border-grey;
+      }
+
+      &.current {
+        min-width: 100%;
+        padding: 0 2rem 0;
+        margin-top: 0;
+        box-shadow: none;
+      }
+    }//tickets-price__one
+    .current ~ .tickets-price__one {
+      &:before {
+        background: $white;
+        opacity: .2;
+      }
+    }
+    .current {
+      margin-bottom: 2.4rem;
+      .tp__value {
+        width: 100%;
+        font-size: 4.8rem;
+        line-height: 4.8rem;
+        margin: 0 0 1.6rem;
+        text-align: center;
+      }
+      .tp__deadline {
+        font-size: 2.0rem;
+        line-height: 2.0rem;
+        letter-spacing: -0.05em;
+        width: 100%;
+        text-align: center;
+      }
+      .tp__price {
+        padding-top: .8rem;
+        margin-bottom: 0;
+      }
+    }
+    .tp__inner {
+
+    }
+    .tp__price {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding-top: 0;
+      margin: 0 0 1.6rem;
+    }
+    .tp__value {
+      width: auto;
+      font-size: 3.2rem;
+      line-height: 3.2rem;
+      margin:0;
+      letter-spacing: -0.05em;
+    }
+    .tp__currency {
+      width: auto;
+      font-size: 1.6rem;
+      line-height: 2rem;
+      letter-spacing: -0.05em;
+      padding-left: .8rem;
+      padding-top: 1.2rem;
+    }
+    .tp__deadline {
+      font-size: 1.4rem;
+      line-height: 1.4rem;
+    }
+    .tp__tab {
+      margin: 0 -2rem 0;
+      padding: 0;
+      width: calc(100% + 4rem);
+
+      li {
+        width: 100%;
+      }
+      a {
+        width: 100%;
+        font-size: 1.4rem;
+        line-height: 2rem;
+        height: 5.4rem;
+        padding: 1.7rem 1rem;
+
+        &:before {
+          border-width: .5rem;
+        }
+      }
+    }//tp__tab
+    .tp__currency-list {
+      padding: 0 0 .6rem;
+      margin: 0 0 1.6rem;
+      width: 75%;
+      justify-content: center;
+
+      li {
+        padding-right: 3.2rem;
+        margin: 0 0 1rem;
+
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+      a {
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+      }
+    }//tp__currency-list
+    .tp__button {
+      padding-top: 1.6rem;
+      margin-left: -2rem;
+      margin-right: -2rem;
+      width: 100vw;
+    }
+    .btn-default {
+      min-height: 10rem;
+    }
+  }//$table-screen
+  @include r($mobile-screen) {
+    .tickets-price__one {
+      padding:1.2rem 2rem 1rem;
+      min-height: 7.6rem;
+
+      &.current {
+        padding: 0 2rem 0;
+      }
+    }//tickets-price__one
+    .current ~ .tickets-price__one {
+
+    }
+    .current {
+      margin-bottom: 1.2rem;
+      .tp__value {
+        font-size: 4.8rem;
+        line-height: 4.8rem;
+        margin: 0 0 1.6rem;
+      }
+      .tp__deadline {
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+      }
+      .tp__price {
+        padding-top: 1.2rem;
+        margin-bottom: 0;
+      }
+    }
+    .tp__inner {
+
+    }
+    .tp__price {
+      margin: 0 0 .8rem;
+    }
+    .tp__value {
+      font-size: 3.2rem;
+      line-height: 3.2rem;
+    }
+    .tp__currency {
+      font-size: 1.6rem;
+      line-height: 2rem;
+      padding-left: .8rem;
+      padding-top: 1.2rem;
+    }
+    .tp__deadline {
+      font-size: 1.4rem;
+      line-height: 1.4rem;
+    }
+    .tp__tab {
+      margin: 0 -2rem 0;
+      padding: 0;
+      width: calc(100% + 4rem);
+
+      li {
+        width: 100%;
+      }
+      a {
+        width: 100%;
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+        height: 4.4rem;
+        padding: 1.4rem .5rem;
+
+        &:before {
+          border-width: .3rem;
+        }
+      }
+    }//tp__tab
+    .tp__currency-list {
+      padding: 0 0 .6rem;
+      margin: 0 0 1.6rem;
+      width: 100%;
+
+      li {
+        padding-right: 1.2rem;
+        padding-left: 1.2rem;
+        margin: 0 0 1rem;
+
+        &:first-child {
+          padding-left: 0;
+        }
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+      a {
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+      }
+    }//tp__currency-list
+    .tp__button {
+      padding-top: 1.6rem;
+      margin-left: -2rem;
+      margin-right: -2rem;
+      width: 100vw;
+    }
+    .btn-default {
+      min-height: 8rem;
+    }
+  }//$mobile-screen
+}//tickets-price-line

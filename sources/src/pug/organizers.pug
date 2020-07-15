@@ -1,0 +1,71 @@
+extends base/_layout
+block head
+	title Organizers
+block page
+
+	mixin organizerOne(obj)
+		.organizer-one
+			.organizer-one__bg(style="background-image:url(images/content/organizers/"+obj.photo+")")
+			.organizer-one__details
+				.organizer-one__head-mobile
+					a(href="index.html").logo-organizer
+						.logo__title sqa
+						.logo__name days / 26
+					button(type="button").close-organizer
+						svg.icon
+							use(xlink:href="#close-icon")
+				.organizer-one__inner
+					.organizer-one__text !{obj.text}
+					.organizer-one__name=obj.name
+					.organizer-one__post=obj.post
+			.organizer-one__main-data
+				.organizer-one__inner
+					.organizer-one__name=obj.name
+					.organizer-one__post=obj.post
+	section.section-default.dark-section
+		.container
+			+breadcrumbs(['Главная', 'Организаторы'])
+			.title-default Организаторы
+
+		.organizers-list__wrap
+			ul.organizers-list
+				li
+					+organizerOne({
+						photo:'org-1.jpg',
+						name:'Владислав Орликов',
+						post:'Председатель оргкомитета',
+						text:'<p>Генеральный директор, основатель и владелец компании <a href="#">Лаборатория тестирования (SQALab)</a> (Москва, Россия).Магистр делового администрирования в ИТ менеджменте.Организатор международных IT конференций:</p>' +
+							'<p>SQA Days</p>' +
+							'<p>Application Developer Days</p>' +
+							'<p>Analyst Days</p>' +
+							'<p>SPM Conf</p>' +
+							'<br />' +
+							'<p>Автор и идеолог ресурса <a href="#">IT-CONF.RU</a>.</p>',
+					})
+				li
+					+organizerOne({
+						photo:'org-2.jpg',
+						name:'Татьяна Орликова',
+						post:'Со-организатор',
+						text:'Со-организатор компании <a href="#">Лаборатория тестирования (SQALab)</a>, (Москва, Россия). Помощник председателя оргкомитета по работе с волонтерами.',
+					})
+				li
+					+organizerOne({
+						photo:'org-3.jpg',
+						name:'Алексей Долгов',
+						post:'Со-организатор',
+						text:'Со-организатор компании <a href="#">Лаборатория тестирования (SQALab)</a>, (Москва, Россия). Помощник председателя оргкомитета по работе с волонтерами.',
+					})
+				li
+					+organizerOne({
+						photo:'org-4.jpg',
+						name:'Наталья Долгова',
+						post:'Со-организатор',
+						text:'Со-организатор компании <a href="#">Лаборатория тестирования (SQALab)</a>, (Москва, Россия).',
+					})
+			//organizers-list
+		//organizers-list__wrap
+	//section-default
+	include include/partners-section
+
+

@@ -1,0 +1,56 @@
+.section-ui {
+  display: block;
+  width: 100%;
+  padding: 15rem 0;
+}
+
+.ui-icons-list {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0 0 5rem;
+
+  li {
+    display: block;
+    width: 15rem;
+    text-align: center;
+    box-shadow: 0 0 1px $grey;
+    padding: 2rem;
+    margin: 2rem;
+  }
+  .name {
+    padding: 0 0 1rem;
+  }
+  .icon {
+    width: 5rem;
+    height: 5rem;
+    margin: auto;
+  }
+}
+
+
+.iframe-img {
+  display: block;
+  width: 100%;
+}
+
+.desktop #pages li {
+  a {
+    display: block;
+    &:hover {
+      color: $color-main;
+      font-weight: bold;
+    }
+  }
+}
+
+html.html-iframe {
+  display: block;
+  //height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overflow: scroll;
+}
+

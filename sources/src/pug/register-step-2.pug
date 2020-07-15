@@ -1,0 +1,183 @@
+extends base/_layout
+block head
+	title Step 2
+	- var disableTicketBtn = true
+block page
+
+	mixin regPCLogo()
+		.pc__logo
+			.l__title sqa
+			.l__name days / 26
+	mixin pcRemove()
+		.pc__remove
+			.pc__remove__inner
+				.pc__remove_text
+					| Вы действительно хотите убрать из регистрации участника
+					| #{' '}
+					strong.underline Иван Зенкович
+					| #{' '}
+					| ?
+				.pc__remove_actions
+					.action-one
+						button(type="button").btn.btn-light.btn-sm.btn-light-white
+							span Убрать
+					.action-one
+						button(type="button").btn.btn-bordered.btn-sm.btn-bordered-white.js__remove-participant-cancel
+							span оставить
+	mixin participantCard(obj)
+		.participant-card
+			.participant-card__bg
+			.participant-card__inner
+
+				if (!obj.reserved)
+					.pc__info
+						.pc__controls
+							button.pc__control.pc__control-edit.js__set-part-mode
+								svg.icon
+									use(xlink:href="#edit-icon")
+							if (!obj.self_card)
+								button.pc__control.pc__control-remove.js__remove-participant
+									svg.icon
+										use(xlink:href="#close-icon")
+						.pc__name= obj.name ? obj.name : 'Alex'
+						.pc__surname= obj.surname ? obj.surname : 'Bavdey'
+						.pc__post= obj.post ? obj.post : 'Art director at 69testers'
+						.pc__location= obj.location ? obj.location : 'Minsk, Belarus'
+				else
+					.pc__reserved
+						.pc__reserved-inner
+							.reserved__title Бронь /1
+							.reserved__text Забронированные места оплачиваются сразу, а заполнить данные участника можно будет после регистрации на специальной странице , используя код брони, который Вы получите в письме об оплате
+							.reserved__contols
+								button(type="button").btn.btn-sm.btn-light.btn-light-opacity.js__remove-participant
+									span снять бронь
+				+regPCLogo
+				.pc__empty
+					.pc__info.pc__info-empty
+						.pc__name
+						.pc__surname
+						.pc__post
+						.pc__location
+				+pcRemove
+			//participant-card__inner
+		//participant-card
+	mixin participantCardAdd()
+		.participant-card
+			.participant-card__inner.participant-card__inner-white-bg
+				+regPCLogo
+				.pc__add
+					.pc__add-inner
+						.pc__add-icon
+						.pc__add-text добавить участника
+				.pc__form
+					.pc__form-line
+						+labelForm({label_name: 'Введите e-mail участника ', required: true, clear_control: true})
+					.pc__btn-wrap
+						button(type="button").btn.btn-sm.btn-light.js__set-part-mode
+							span Создать новый
+					.pc__btn-wrap
+						button(type="button").btn.btn-sm.btn-bordered
+							span забронировать место
+				.pc__empty
+					.pc__info.pc__info-empty
+						.pc__name
+						.pc__surname
+						.pc__post
+						.pc__location
+			//participant-card__inner
+		//participant-card
+
+	section.section-default
+		.container
+			+breadcrumbs(['Главная', 'Билеты', 'Регистрация'])
+			.title-default Регистрация участников
+				| #{' '}
+				span.nowrap SQA Days
+					| #{' '}
+					span.blue /
+					| 26
+		- var currentStep = 2
+		include include/steps-block
+		.container
+			.participant-slider__wrap
+				.participant-slider
+					.participant-card-slide
+						+participantCard({self_card: true})
+					.participant-card-slide
+						+participantCard({})
+					.participant-card-slide
+						+participantCard({reserved: true})
+					//participant-card-slide
+					.participant-card-slide
+						+participantCardAdd
+					//participant-card-slide
+				//participant-slider
+			//participant-slider__wrap
+			.mobile-remove-participant-popup
+				+pcRemove
+			//mobile-remove-participant-popup
+			.discout-message
+				.discout-message__text
+					span.text-icon
+						img( src="images/content/hand-icons/hand-1.png" alt="")
+					span.value Скидка
+						| #{' '}
+						strong 10%
+						| #{' '}
+						| при регистрации более 3 участников
+		.block-default.participant-editor
+			.participant-editor__dark-bg
+			.participant-editor__inner
+				.participant-editor__head
+					button.btn.btn-editor.btn-editor-cancel.js__remove-part-mode
+						svg.icon
+							use(xlink:href="#close-icon")
+					.participant-editor__title Данные участника /3
+					button.btn.btn-editor.btn-editor-save
+						svg.icon
+							use(xlink:href="#ok-icon")
+				.participant-editor__body
+					.container
+						.subtitle-default Редактировать данные участника /3
+						.form
+							.f__row
+								.f__col
+									+labelForm({label_name: 'Фамилия', required: true})
+								.f__col
+									+labelForm({label_name: 'Имя', required: true})
+								.f__col
+									+labelForm({label_name: 'Отчество', required: false})
+							.f__row
+								.f__col
+									+labelForm({label_name: 'Email', required: true, input_type: 'email'})
+								.f__col
+									+labelForm({label_name: 'Номер телефона', required: true, input_type: 'tel'})
+								.f__col
+									+labelForm({label_name: 'Мессенджер', required: false})
+							.f__row
+								.f__col
+									+customSelect({ label_name: 'Страна', required: true},['Беларусь', 'Россия', 'Польша', 'Литва'])
+								.f__col
+									+customSelect({label_name: 'Город', required: true},['Минск', 'Брест', 'Витебск', 'Гомель', 'Гродно', 'Могилев'])
+							.form-line
+								+customCheckbox({text: 'Работает в другом месте', data_additionally: 'addit-1'})
+							.form-additionally(data-additionally="addit-1")
+								.f__row
+									.f__col
+										+labelForm({label_name: 'Должность', required: true})
+									.f__col.additionally-hide
+										+labelForm({label_name: 'Название компании', required: true})
+									.f__col.additionally-hide
+										+labelForm({label_name: 'Название компнаии в бейджике', required: false})
+								.f__row
+									.f__col.additionally-hide
+										+labelForm({label_name: 'Сайт компании', required: false})
+									.f__col.additionally-hide
+										+customSelect({label_name: 'Тип компании', required: false},['Коммерческая', 'Продуктовая', 'Образовательная', 'Не коммерческая'])
+									.f__col.additionally-hide
+										+customSelect({label_name: 'Количество сотрудников', required: false},['>10', '>30', '>69', '>100'])
+					.space-separator
+					+controlLine([{name: 'отменить', className: 'js__remove-part-mode'},{name: 'Сохранить', className: 'control-link-blue'}], 'control-line__mobile-revers')
+		//block-default participant-editor
+		+controlLine([{name: 'Назад'},{name: 'Далее', className: 'control-link-blue'}], 'control-line__mobile-revers')
+	//section-default

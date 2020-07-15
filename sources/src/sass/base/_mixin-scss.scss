@@ -1,0 +1,91 @@
+@mixin tableFilterMobile($attribute) {
+  .t_col[data-filter]:not([data-filter="#{$attribute}"]) {
+    min-width: 5rem;
+    width: 5rem;
+    max-width: 100%;
+
+    .event-single {
+      overflow: hidden;
+
+      .es__aside,
+      .es__buttons,
+      .es__location,
+      .es__company,
+      .es__author,
+      .es__category,
+      .es__bottom {
+        display: none;
+      }
+
+      &:not(.locked) {
+        .es__title {
+          color: $grey;
+        }
+        .es__info {
+          position: relative;
+          &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 1px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: $light-bg;
+          }
+        }
+      }
+    }
+
+    .full-title {
+      display: none;
+    }
+    .table-toggle-link {
+      display: block;
+    }
+    .es__title {
+      display: block;
+      transform: rotate(90deg);
+      white-space: nowrap;
+      padding-left: 2.4rem;
+    }
+    .es__empty {
+      & > * {
+        display: none;
+      }
+    }
+  }// other filters
+  .t_col[data-filter="#{$attribute}"] {
+    width: 100%;
+
+
+
+    .table-toggle-link {
+      display: none;
+    }
+  }
+}
+
+@mixin btnHoverBefore() {
+  span {
+    position: relative;
+  }
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $hover-color;
+    opacity: 0;
+    transition: opacity $fast-anim ease;
+  }
+  .desktop &:hover {
+    &:before {
+      opacity: .3;
+    }
+    @content
+  }
+}

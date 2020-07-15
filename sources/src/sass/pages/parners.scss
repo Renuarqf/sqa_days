@@ -1,0 +1,138 @@
+.package-list__wrap {
+  display: block;
+  width: 100%;
+  position: relative;
+  padding-bottom: 1px;
+}
+
+.package-list {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: stretch;
+  margin: 0;
+  padding: 0;
+
+  & > li {
+    display: block;
+    list-style: none;
+    width: 25%;
+  }
+  .package {
+    display: block;
+    width: 100%;
+    position: relative;
+    height: 100%;
+    min-height: 52.4rem;
+    box-shadow: 0 1px 0 $border-grey, 1px -1px 0 $border-grey, 1px 1px 0 $border-grey;
+  }
+  .package__head {
+    display: block;
+    width: 100%;
+    box-shadow: 0 1px 0 $border-grey;
+    padding: 1.6rem 2rem;
+    text-align: center;
+  }
+  .package__title {
+    display: block;
+    width: 100%;
+    font-size: 3.2rem;
+    line-height: 1;
+    font-weight: bold;
+    color: $text-color;
+    white-space: nowrap;
+  }
+  .package__body {
+    display: block;
+    padding: 4.8rem 5.5rem;
+  }
+  .package__data {
+    display: block;
+    width: 100%;
+    font-size: 2.4rem;
+    line-height: 1;
+    text-align: center;
+    color: $grey;
+
+    & > * {
+      margin: 0 0 2.4rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  @include r($desktop-xs) {
+    .package {
+      min-height: 42.8rem;
+    }
+    .package__head {
+      padding: 1.6rem 2rem;
+    }
+    .package__title {
+      font-size: 2.4rem;
+      line-height: 1;
+    }
+    .package__body {
+      display: block;
+      padding: 2.4rem;
+    }
+    .package__data {
+      font-size: 2rem;
+      line-height: 1;
+    }
+  }//$desktop-xs
+  @include r($table-screen) {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 1px 0;
+
+    & > li {
+      width: 32rem;
+      min-width: 32rem;
+    }
+    .package {
+      min-height: 42.8rem;
+    }
+    .package__head {
+      padding: 1.6rem 2rem;
+    }
+    .package__title {
+      font-size: 2.4rem;
+      line-height: 1;
+    }
+    .package__body {
+      display: block;
+      padding: 2.4rem;
+    }
+    .package__data {
+      font-size: 2rem;
+      line-height: 1;
+    }
+  }//$table-screen
+  @include r($mobile-screen) {
+
+    & > li {
+      width: 25rem;
+      min-width: 25rem;
+    }
+    .package {
+      min-height: 34.8rem;
+    }
+    .package__head {
+      padding: 1.6rem 2rem;
+    }
+    .package__title {
+      font-size: 2.0rem;
+      line-height: 1;
+    }
+    .package__body {
+      display: block;
+      padding: 1.6rem 1.2rem;
+    }
+    .package__data {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+  }//$mobile-screen
+}//package-list

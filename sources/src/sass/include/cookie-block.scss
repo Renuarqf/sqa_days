@@ -1,0 +1,45 @@
+.cookie-block {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1500;
+  background: $color-main;
+  color: $white;
+  padding: 2.4rem 0;
+
+  &.hide {
+    display: none;
+  }
+
+  .cookie-line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .cookie__text {
+    display: block;
+    width: 100%;
+    font-size: 2rem;
+    line-height: 1.4;
+    padding-right: 3rem;
+  }
+  .cookie__contol {
+    display: block;
+  }
+  @include r($table-screen) {
+    .cookie__text {
+      font-size: 1.8rem;
+      line-height: 2.4rem;
+      padding-right: 9rem;
+    }
+  }//$table-screen
+  @include r($mobile-screen) {
+    .cookie__text {
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+      padding-right: 3rem;
+    }
+  }//$mobile-screen
+}//cookie-block

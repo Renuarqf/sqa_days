@@ -1,0 +1,36 @@
+extends base/_layout
+block head
+	title Media
+block page
+
+
+	section.section-default
+		include include/select-dates
+		.container
+			+breadcrumbs(['Главная', 'Медиа'])
+			.title-default Медиа
+				| #{' '}
+				a(href="#select-date").title-select.js__show-select-dates SQA Days / 26
+
+		//container
+		+tabLine([
+			{name: 'Видео'},
+			{name: 'Презентации'},
+			{name: 'Фото', className: 'active'},
+			{name: 'Telegram'},
+		])
+		.media-main-block
+			ul.media-list.photo-list
+				- for (var i = 1; i < 17; i++)
+					li
+						+mediaFigure({photo: 'photo-preview-'+i,link: 'images/content/media/photo-'+i+'.jpg', gallery: 'photo-gallery'})
+			.media-control__wrap
+				a(href="#" target="_blank").media-control
+					span.name Все фото в облаке
+					svg.icon
+						use(xlink:href="#drive-icon")
+
+	//section-default
+
+
+	include include/partners-section

@@ -1,0 +1,135 @@
+extends base/_layout
+block head
+	title Offer partners
+block page
+	section.section-default
+		.container
+			+breadcrumbs(['Главная', 'Предложение партнёрам'])
+			.title-default Предложение партнёрам
+		//container
+		mixin package(title, ...items)
+			.package
+				.package__head
+					.package__title=title
+				.package__body
+					.package__data
+						each item in items
+							p= item
+
+		.package-list__wrap
+			ul.package-list
+				li
+					+package('Бронзовый','Размещение на стендах', 'Доступ к базе участников')
+				li
+					+package('Серебрянный','Размещение на стендах', 'Доступ к базе участников', '+', 'ВИП вход на все доклады')
+				li
+					+package('Золотой','Размещение на стендах', 'Доступ к базе участников', 'ВИП вход на все доклады', '+', 'Логотип на всех бейджах' )
+				li
+					+package('Платиновый','Размещение на стендах', 'Доступ к базе участников', 'ВИП вход на все доклады', 'Логотип на всех бейджах', '+', 'Фото с Mr. Bavdey', 'ВИП ложа')
+
+		.block-default
+			.container
+				.subtitle-default Заполните данные для пакета партнера
+				.form
+					.f__row
+						.f__col
+							+customSelect({
+								label_name: 'Пакет партнёра'
+							},['Платиновый', 'Золотой', 'Серебрянный', 'Бронзовый'])
+						.f__col
+							+labelForm({label_name: 'Фамилия', required: true})
+						.f__col
+							+labelForm({label_name: 'Имя', required: true})
+					.f__row
+						.f__col
+							+labelForm({label_name: 'Организация', required: true})
+						.f__col
+							+labelForm({label_name: 'Email', required: true, input_type: 'email'})
+						.f__col
+							+labelForm({label_name: 'Номер телефона', required: true, input_type: 'tel'})
+					.form-line
+						+customCheckbox({text: 'Я прочитал <a href="#">пользовательское соглашение</a> и согласен с ним'})
+					.form-line
+						+labelForm({
+							label_name: 'Комментарий',
+							required: false,
+							placeholder: 'Дополнительная информация, если необходимо',
+							textarea: true,
+						})
+				+controlLine([{name: 'заполнить из профиля'},{name: 'Стать партнёром', className: 'control-link-blue'}], 'control-line__mobile-revers')
+			//container
+		//block-default
+		.block-default
+			.container
+				.blue-info
+					.subtitle-default.blue-info__title Информационным партнерам
+					.blue-info__part.part-simple
+						.blue-info__subtitle Мы предлагаем:
+						.text-block
+							p Предоставление статуса Информационный Партнёр конференции.
+							p Размещение логотипа на официальном сайте конференции sqadays.com.
+							p Размещение печатной продукции Информационного Партнёра (газет, журналов и т.д.) на стендах, размещенных в холле конференции. Приветствуется предоставление информационным партнёром различной сувенирной продукции (ручки, календари, магниты, флешки и т.п.)
+							p Предоставление Информационному Партнёру возможности 5% скидки при оплате участия в конференции для посетителей их ресурсов (промо-код предоставляется по запросу).
+					.blue-info__part.part-simple
+						.blue-info__subtitle Вы обязуетесь:
+						.text-block
+							p Разместить баннер конференции с активной не закрытой от поисковых систем ссылкой на сайт
+								| #{' '}
+								a(href="#") https://www.sqadays.com
+								| #{' '}
+								| на главной странице своего ресурса. Баннер должен быть доступен не меньше месяца с даты публикации.
+							p Опубликовать не менее 2-х анонсов конференции (Организаторы предоставляют информацию о ходе подготовки мероприятия).
+							p Провести рассылку о мероприятии по базе подписчиков.
+							p Опубликовать обзор о ходе и итогах конференции SQA Days (Все материалы, включая фактическую информацию, фото и видео мероприятия могут быть предоставлены организатором, либо должны быть согласованы с организатором перед публикацией во избежание фактических ошибок — в названиях, именах, датах и пр.).
+			//container
+		//block-default
+		.block-default
+			.container
+				.subtitle-default Контакты для связи
+			.contacts-table__single
+				.contacts-table
+					.ct__row
+						.ct__col
+							.ct__body
+								.contact-cell
+									.contact-cell__name Владислав
+									ul.phone-list
+										li
+											a(href="tel:+79152532611") +7 (915) 253-26-11
+										li
+											a(href="tel:+375297704858") +375 (29) 770-48-58
+										li
+											a(href="tel:+375297704858") +375 (29) 770-48-58
+						.ct__col
+							.ct__body
+								.contact-cell
+									.contact-cell__name Татьяна
+									ul.phone-list
+										li
+											a(href="tel:+375295084670") +375 (29) 508-46-70
+					.ct__row
+						ul.contacts-list
+							li
+								a(href="mailto:buh@it-conf.ru").contact-single
+									.contact-single__inner
+										svg.icon
+											use(xlink:href="#mail-icon")
+										.name buh@it-conf.ru
+							li
+								a(href="skype:vldcorp").contact-single
+									.contact-single__inner
+										svg.icon
+											use(xlink:href="#skype-icon")
+										.name vldcorp
+							li
+								a(href="tg://resolve?domain=@vldcorp").contact-single
+									.contact-single__inner
+										svg.icon
+											use(xlink:href="#tg-icon")
+										.name @vldcorp
+				//contacts-table
+			//contacts-table__single
+		//.block-default
+	//section-default
+	include include/partners-section
+

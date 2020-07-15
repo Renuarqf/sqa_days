@@ -1,0 +1,150 @@
+extends base/_layout
+block head
+	title Contacts
+block page
+	section.section-default
+		.container
+			+breadcrumbs(['Главная', 'Контакты'])
+			.title-default Контакты
+		//container
+		mixin contactCard()
+			.contact-card
+				.contact-card__line
+					.contact-card__title Юридический адрес:
+					.contact-card__value 220012, Республика Беларусь, г. Минск, ул. Калинина д. 30Б, кв. 61
+				.contact-card__line
+					.contact-card__title УНП:
+					.contact-card__value 192708397
+				.contact-card__line
+					.contact-card__title Р/счет:
+					.contact-card__value BY17 ALFA 3013 2527 4000 1027 0000 в ЗАО "АЛЬФА-БАНК"
+				.contact-card__line
+					.contact-card__title Бик:
+					.contact-card__value ALFABY2X
+				.contact-card__line
+					.contact-card__title УНП банка:
+					.contact-card__value 101541947
+				.contact-card__line
+					.contact-card__title Адрес банка:
+					.contact-card__value ул. Сурганова, 43-47, 220013 Минск, Республика Беларусь
+		mixin toggleContact(uno, link, ...text)
+			.toggle-contact
+				if (uno)
+					.toggle-contact__title= link
+				else
+					a(href="#").toggle-contact__link= link
+				.toggle-contact__body
+					.text-block
+						each item in text
+							p= item
+					+contactCard
+		.contacts-block
+			.contacts-block__head
+				ul.cbh__list
+					li
+						a(href="#" data-contacts="c1").contacts-category-link.active
+							span Россия
+					li
+						a(href="#" data-contacts="c2").contacts-category-link
+							span Эстония
+					li
+						a(href="#" data-contacts="c3").contacts-category-link
+							span Беларусь
+					li
+						a(href="#" data-contacts="c4").contacts-category-link
+							span Контакты для связи
+
+			.contacts-block__body
+				.contacts-tab(data-contacts="c1")
+					.contacts-tab__head
+						a(href="#" data-contacts="c1").contacts-category-link-mobile
+							span Россия
+					.contacts-tab__body
+						+toggleContact(true,'ООО "Лаборатория тестирования"','Юридическое лицо в Российской Федерации, г. Москва')
+					//contacts-tab__body
+				//contacts-tab
+				.contacts-tab(data-contacts="c2")
+					.contacts-tab__head
+						a(href="#" data-contacts="c2").contacts-category-link-mobile
+							span Эстония
+					.contacts-tab__body
+						+toggleContact(true,'IT-Conf OÜ PLC','Юридическое лицо в Эстонии, г. Таллинн')
+					//contacts-tab__body
+				//contacts-tab
+				.contacts-tab(data-contacts="c3")
+					.contacts-tab__head
+						a(href="#" data-contacts="c3").contacts-category-link-mobile
+							span Беларусь
+					.contacts-tab__body
+						+toggleContact(false,'ИП Орликов Владислав Александрович','Свидетельство о регистрации 691779640 выдано Минским райисполкомом 11.12.2014')
+						+toggleContact(false,'ИП Орликова Татьяна Леонидовна','Свидетельство о регистрации 192708397 выдано Минским горисполкомом 21.09.2016')
+					//contacts-tab__body
+				//contacts-tab
+				.contacts-tab(data-contacts="c4" style="display:block")
+					.contacts-tab__head
+						a(href="#" data-contacts="c4").contacts-category-link-mobile
+							span Контакты для связи
+					.contacts-tab__body
+						.contacts-table
+							.ct__row
+								.ct__col
+									.ct__head
+										.th__data
+											.th__title Бухгалтерия
+											.th__sub (договоры, счета, акты)
+									.ct__body
+										.contact-cell
+											.contact-cell__name Алексей
+											ul.phone-list
+												li
+													a(href="tel:+79152532611") +7 (915) 253-26-11
+												li
+													a(href="tel:+375295025615") +375 (29) 502-56-15
+								.ct__col
+									.ct__head
+										.th__data
+											.th__title Организационные вопросы
+											.th__sub (партнерство, организация и прочие вопросы)
+									.ct__body
+										.contact-cell
+											.contact-cell__name Владислав
+											ul.phone-list
+												li
+													a(href="tel:+79152532611") +7 (915) 253-26-11
+												li
+													a(href="tel:+375297704858") +375 (29) 770-48-58
+												li
+													a(href="tel:+375297704858") +375 (29) 770-48-58
+										.contact-cell
+											.contact-cell__name Татьяна
+											ul.phone-list
+												li
+													a(href="tel:+375295084670") +375 (29) 508-46-70
+							.ct__row
+								ul.contacts-list
+									li
+										a(href="mailto:buh@it-conf.ru").contact-single
+											.contact-single__inner
+												svg.icon
+													use(xlink:href="#mail-icon")
+												.name buh@it-conf.ru
+									li
+										a(href="skype:vldcorp").contact-single
+											.contact-single__inner
+												svg.icon
+													use(xlink:href="#skype-icon")
+												.name vldcorp
+									li
+										a(href="tg://resolve?domain=@vldcorp").contact-single
+											.contact-single__inner
+												svg.icon
+													use(xlink:href="#tg-icon")
+												.name @vldcorp
+					//contacts-tab__body
+				//contacts-tab
+			//contacts-block__body
+		//contacts-block
+
+	//section-default
+	include include/partners-section
+

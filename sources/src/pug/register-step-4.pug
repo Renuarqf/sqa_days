@@ -1,0 +1,38 @@
+extends base/_layout
+block head
+	title Step 4
+	- var disableTicketBtn = true
+block page
+
+	section.section-default
+		.container
+			+breadcrumbs(['Главная', 'Билеты', 'Регистрация'])
+			.title-default Регистрация участников
+				| #{' '}
+				span.nowrap SQA Days
+					| #{' '}
+					span.blue /
+					| 26
+		- var currentStep = 4
+		include include/steps-block
+		.container
+			.pay-info-block
+				.pay-info__img
+					img( src="images/content/info-images/pay.svg" alt="")
+				.pay-info__message Оплатите билет
+				.pay-info__text Если окно оплаты не открылось или заблокировалось. <br />Запросите оплату повторно.
+		//container
+		+controlLine([{name: 'Назад'},{name: 'Повторить запрос', className: 'control-link-blue'}], 'control-line__mobile-revers')
+	//section-default
+	.mobile-pay-info
+		a(href="register-step-3.html").m_pay-info__dark
+		.m_pay-info-block
+			.m_pay-info__head
+				.m_pay-info__message Оплатите билет
+			.m_pay-info__body
+				.m_pay-info__img
+					img( src="images/content/info-images/pay.svg" alt="")
+				.m_pay-info__text Если окно оплаты не открылось или заблокировалось. <br />Запросите оплату повторно.
+			.m_pay-info-controls
+				button.btn.btn-default
+					span Повторить запрос
